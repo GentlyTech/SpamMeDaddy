@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:autoMirrored="true" android:height="108dp" android:tint="@android:color/white" android:viewportHeight="24" android:viewportWidth="24" android:width="108dp">
+    <!-- Chat Bubble -->
+    <path
+        android:name="path"
+        android:pathData="M 20 2 L 4 2 C 2.9 2 2.01 2.9 2.01 4 L 2 22 L 6 18 L 20 18 C 21.1 18 22 17.1 22 16 L 22 4 C 22 2.9 21.1 2 20 2 Z M 6 9 L 18 9 L 18 11 L 6 11 Z M 14 14 L 6 14 L 6 12 L 14 12 Z M 18 8 L 6 8 L 6 6 L 18 6 Z"
+        android:fillColor="?attr/vectorImageFill"
+        android:strokeWidth="1"/>
+    <group android:name="group">
+        <!-- Clock Frame -->
+        <path
+            android:name="path_1"
+            android:pathData="M 21.841 20 C 20.824 20 20 20.826 20 21.843 C 20 22.861 20.824 23.686 21.841 23.686 C 22.861 23.686 23.686 22.861 23.686 21.843 C 23.686 20.826 22.861 20 21.841 20 Z M 21.843 23.318 C 21.028 23.318 20.369 22.658 20.369 21.843 C 20.369 21.029 21.028 20.369 21.843 20.369 C 22.658 20.369 23.318 21.029 23.318 21.843 C 23.318 22.658 22.658 23.318 21.843 23.318 Z"
+            android:fillColor="?attr/vectorImageFill"
+            android:strokeWidth="1"/>
+        <!-- Clock Hands -->
+        <path
+            android:name="path_2"
+            android:pathData="M 21.935 20.922 L 21.659 20.922 L 21.659 22.028 L 22.627 22.608 L 22.765 22.381 L 21.935 21.889 Z"
+            android:fillColor="?attr/vectorImageFill"
+            android:strokeWidth="1"/>
+    </group>
+</vector>
