@@ -35,7 +35,7 @@ public class AddRecipientPage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        hideContactsList(ContactsListHideReason.NO_CONTACTS);
+        hideContactsList(ContactsListHideReason.NO_CONTACTS);  // TODO remove and implement checking contacts length and displaying accordingly
     }
 
     public void showContactsList() {
