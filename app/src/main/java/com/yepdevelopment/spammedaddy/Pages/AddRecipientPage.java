@@ -12,7 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Contact;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
@@ -37,14 +39,17 @@ public class AddRecipientPage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        binding.addRecipientsContactsList.setLayoutManager(new LinearLayoutManager(getContext()));
+
         registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
             if (result) {
                 contacts = getContacts(getContext());
                 if (contacts.isEmpty()) {
                     hideContactsList(ContactsListHideReason.NO_CONTACTS);
-                } else {
-                    showContactsList();
+                    return;
                 }
+                showContactsList();
+                binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), contacts));
             } else {
                 hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
             }
