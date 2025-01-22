@@ -21,6 +21,7 @@ public class HomePage extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return PageHomeBinding.inflate(inflater, container, false).getRoot();
+        binding = PageHomeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 }
