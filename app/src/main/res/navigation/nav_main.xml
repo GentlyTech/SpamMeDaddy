@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
+    android:label="@string/homePage_Title"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.yepdevelopment.spammedaddy.Pages.HomePage"
-        android:label="fragment_home"
-        tools:layout="@layout/page_home" >
+        android:label="@string/homePage_Title"
+        tools:layout="@layout/page_home">
         <action
             android:id="@+id/action_homeFragment_to_addRecipientPage"
             app:destination="@id/addRecipientPage" />
@@ -17,6 +18,6 @@
     <fragment
         android:id="@+id/addRecipientPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.AddRecipientPage"
-        android:label="page_add_recipient"
+        android:label="@string/addRecipientPage_Title"
         tools:layout="@layout/page_add_recipient" />
 </navigation>
