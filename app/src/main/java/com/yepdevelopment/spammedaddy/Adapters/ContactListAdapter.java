@@ -14,14 +14,17 @@ import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentContactCardBinding>> {
     Context context;
     List<Contact> contacts;
+    Consumer<Contact> onClickHandler;
 
-    public ContactListAdapter(Context context, List<Contact> contacts) {
+    public ContactListAdapter(Context context, List<Contact> contacts, Consumer<Contact> onClickHandler) {
         this.context = context;
         this.contacts = contacts != null ? contacts : new LinkedList<>();
+        this.onClickHandler = onClickHandler;
     }
 
     @NonNull
@@ -42,6 +45,10 @@ public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<C
 
         holder.getBinding().contactCardDisplayName.setText(contact.getName());
         holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
+
+        if (onClickHandler != null) {
+            holder.getBinding().contactCardLayoutRoot.setOnClickListener((ignored) -> onClickHandler.accept(contact));
+        }
     }
 
     @Override
