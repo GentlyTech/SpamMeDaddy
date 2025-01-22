@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="homePage_addRecipientFloatingActionButton_contentDescription">Add recipient</string>
+    <string name="contactCardAvatar_contentDescription">User avatar</string>
 </resources>
