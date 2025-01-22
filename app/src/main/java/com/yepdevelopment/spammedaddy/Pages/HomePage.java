@@ -32,8 +32,20 @@ public class HomePage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        hideRecipientsList(); // TODO remove and implement checking recipients list length and displaying accordingly
+
         binding.addRecipientFloatingActionButton.setOnClickListener((v) -> {
             navController.navigate(HomePageDirections.actionHomeFragmentToAddRecipientPage());
         });
+    }
+
+    public void showRecipientsList() {
+        binding.homeRecipientsList.setVisibility(View.VISIBLE);
+        binding.homeRecipientsListStatusLayout.setVisibility(View.GONE);
+    }
+
+    public void hideRecipientsList() {
+        binding.homeRecipientsList.setVisibility(View.GONE);
+        binding.homeRecipientsListStatusLayout.setVisibility(View.VISIBLE);
     }
 }

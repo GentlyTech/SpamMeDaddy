@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">SpamMeDaddy</string>
 
+    <string name="homePage_RecipientsListStatusHeading">No Recipients</string>
+    <string name="homePage_RecipientsListStatusBody">Use the \'+\' button to add recipients</string>
+
     <string name="addRecipientPage_RecipientEditText_Hint_ContactsDisallowed">Phone number</string>
     <string name="addRecipientPage_RecipientEditText_Hint_ContactsAllowed">Name or phone number</string>
     <string name="addRecipientPage_RecipientEditTextLeftHint_Text">To:</string>
