@@ -1,13 +1,14 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
 import static com.yepdevelopment.spammedaddy.Utils.ContactUtils.getContacts;
-import static com.yepdevelopment.spammedaddy.Utils.ContactUtils.hasContactsPermission;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -36,18 +37,18 @@ public class AddRecipientPage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        if (hasContactsPermission(getContext())) {
-            contacts = getContacts(getContext());
-            if (contacts.isEmpty()) {
-                hideContactsList(ContactsListHideReason.NO_CONTACTS);
+        registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
+            if (result) {
+                contacts = getContacts(getContext());
+                if (contacts.isEmpty()) {
+                    hideContactsList(ContactsListHideReason.NO_CONTACTS);
+                } else {
+                    showContactsList();
+                }
+            } else {
+                hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
             }
-            else {
-                showContactsList();
-            }
-        }
-        else {
-            hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
-        }
+        }).launch(Manifest.permission.READ_CONTACTS);
     }
 
     public void showContactsList() {
