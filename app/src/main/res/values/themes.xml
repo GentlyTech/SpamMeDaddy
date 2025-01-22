@@ -5,6 +5,7 @@
         <item name="colorSecondary">@color/gray</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="cardBackgroundColor">@color/offWhite</item>
 
         <item name="vectorImageFill">@color/black</item>
     </style>
