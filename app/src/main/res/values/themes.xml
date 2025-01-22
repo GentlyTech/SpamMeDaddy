@@ -12,4 +12,9 @@
     <declare-styleable name="vectorImage">
         <attr name="vectorImageFill" format="color" />
     </declare-styleable>
+
+    <style name="customFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="tint">@color/white</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+    </style>
 </resources>
