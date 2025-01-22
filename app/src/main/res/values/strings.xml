@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">SpamMeDaddy</string>
-    <string name="addRecipientPage_RecipientEditText_Hint">Names or phone numbers</string>
+
+    <string name="addRecipientPage_RecipientEditText_Hint_ContactsDisallowed">Phone number</string>
+    <string name="addRecipientPage_RecipientEditText_Hint_ContactsAllowed">Name or phone number</string>
+    <string name="addRecipientPage_RecipientEditTextLeftHint_Text">To:</string>
+    <string name="addRecipientPage_ContactsListStatusHeading_NoContacts">No Contacts</string>
+    <string name="addRecipientPage_ContactsListStatusHeading_ContactsDisallowed">Permission Denied</string>
+    <string name="addRecipientPage_ContactsListStatusBody_NoContacts">It looks like you don\'t have any contacts</string>
+    <string name="addRecipientPage_ContactsListStatusBody_ContactsDisallowed">You have chosen to disallow access to contacts in this app</string>
 
     <string name="homePage_Title">Home</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
