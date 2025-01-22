@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.yepdevelopment.spammedaddy.databinding.PageHomeBinding;
 
 public class HomePage extends Fragment {
     PageHomeBinding binding;
+    NavController navController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
     }
 
     @Override
@@ -29,7 +33,7 @@ public class HomePage extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.addRecipientFloatingActionButton.setOnClickListener((v) -> {
-
+            navController.navigate(HomePageDirections.actionHomeFragmentToAddRecipientPage());
         });
     }
 }
