@@ -25,7 +25,7 @@ public class ContactUtils {
         if (context == null) return contacts;
         ContentResolver contentResolver = context.getContentResolver();
 
-        try (Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, ADD_RECIPIENTS_CONTACTS_PROJECTION, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC")) {
+        try (Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, ADD_RECIPIENTS_CONTACTS_PROJECTION, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC")) {
             if (cursor == null) return contacts;
 
             final int nameIndex = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME);
