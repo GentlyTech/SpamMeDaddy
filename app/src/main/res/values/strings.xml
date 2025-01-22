@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpamMeDaddy</string>
+    <string name="addRecipientPage_RecipientEditText_Hint">Names or phone numbers</string>
 </resources>
