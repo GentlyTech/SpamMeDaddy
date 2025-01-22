@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     android:label="@string/homePage_Title"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homePage">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/homePage"
         android:name="com.yepdevelopment.spammedaddy.Pages.HomePage"
         android:label="@string/homePage_Title"
         tools:layout="@layout/page_home">
