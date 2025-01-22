@@ -49,7 +49,7 @@ public class AddRecipientPage extends Fragment {
                     return;
                 }
                 showContactsList();
-                binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), contacts));
+                binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), contacts, null));
             } else {
                 hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
             }
