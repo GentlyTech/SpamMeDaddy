@@ -40,8 +40,8 @@ public class ContactUtils {
         return contacts;
     }
 
-    public static int checkContactsPermission(Context context) {
-        if (context == null) return PackageManager.PERMISSION_DENIED;
-        return context.checkSelfPermission(Manifest.permission.READ_CONTACTS);
+    public static boolean hasContactsPermission(Context context) {
+        if (context == null) return false;
+        return context.checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
     }
 }
