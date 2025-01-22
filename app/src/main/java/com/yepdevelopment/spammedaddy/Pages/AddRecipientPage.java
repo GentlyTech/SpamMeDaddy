@@ -1,25 +1,26 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
+import static com.yepdevelopment.spammedaddy.Utils.ContactUtils.getContacts;
+import static com.yepdevelopment.spammedaddy.Utils.ContactUtils.hasContactsPermission;
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.yepdevelopment.spammedaddy.R;
+import com.yepdevelopment.spammedaddy.Types.Contact;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 
-public class AddRecipientPage extends Fragment {
-    public enum ContactsListHideReason {
-        NO_CONTACTS,
-        CONTACTS_DISALLOWED
-    }
+import java.util.List;
 
+public class AddRecipientPage extends Fragment {
     PageAddRecipientBinding binding;
+    List<Contact> contacts = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,18 @@ public class AddRecipientPage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        hideContactsList(ContactsListHideReason.NO_CONTACTS);  // TODO remove and implement checking contacts length and displaying accordingly
+        if (hasContactsPermission(getContext())) {
+            contacts = getContacts(getContext());
+            if (contacts.isEmpty()) {
+                hideContactsList(ContactsListHideReason.NO_CONTACTS);
+            }
+            else {
+                showContactsList();
+            }
+        }
+        else {
+            hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
+        }
     }
 
     public void showContactsList() {
@@ -58,5 +70,10 @@ public class AddRecipientPage extends Fragment {
                 binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
                 break;
         }
+    }
+
+    public enum ContactsListHideReason {
+        NO_CONTACTS,
+        CONTACTS_DISALLOWED
     }
 }
