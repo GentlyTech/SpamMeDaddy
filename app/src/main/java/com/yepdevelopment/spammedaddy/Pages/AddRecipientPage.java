@@ -1,6 +1,6 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
-import static com.yepdevelopment.spammedaddy.Utils.ContactUtils.getContacts;
+import static com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils.getContacts;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -12,22 +12,30 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
+import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
+import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 
-import java.util.List;
-
 public class AddRecipientPage extends Fragment {
+    AddRecipientPageViewModel addRecipientPageViewModel;
     PageAddRecipientBinding binding;
-    List<Contact> contacts = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addRecipientPageViewModel = new ViewModelProvider(requireActivity()).get(AddRecipientPageViewModel.class);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        addRecipientPageViewModel.setRecipientFieldText("");
     }
 
     @Override
@@ -41,15 +49,38 @@ public class AddRecipientPage extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.addRecipientsContactsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        addRecipientPageViewModel.getRecipientFieldText().observe(getViewLifecycleOwner(), (updatedValue) -> {
+            if (ContactUtils.hasContactsPermission(getContext())) {
+                if (updatedValue.isEmpty()) {
+                    addRecipientPageViewModel.setContactsList(getContacts(getContext()));
+                } else {
+                    addRecipientPageViewModel.setContactsList(getContacts(getContext(), updatedValue));
+                }
+            } else {
+                requestContactsPermission();
+            }
+        });
+
+        addRecipientPageViewModel.getContactsList().observe(getViewLifecycleOwner(), (updatedList) -> {
+            String recipientFieldTextValue = addRecipientPageViewModel.getRecipientFieldText().getValue();
+            if (updatedList.isEmpty() && recipientFieldTextValue != null && !recipientFieldTextValue.isEmpty()) {
+                hideContactsList(ContactsListHideReason.NO_MATCH);
+                return;
+            } else if (updatedList.isEmpty()) {
+                hideContactsList(ContactsListHideReason.NO_CONTACTS);
+                return;
+            }
+            showContactsList();
+            binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), updatedList, null));
+        });
+
+        binding.recipientEditText.addTextChangedListener(new OnTextChangedListener((updatedValue) -> addRecipientPageViewModel.setRecipientFieldText(updatedValue.toString())));
+    }
+
+    private void requestContactsPermission() {
         registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
             if (result) {
-                contacts = getContacts(getContext());
-                if (contacts.isEmpty()) {
-                    hideContactsList(ContactsListHideReason.NO_CONTACTS);
-                    return;
-                }
                 showContactsList();
-                binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), contacts, null));
             } else {
                 hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
             }
@@ -85,6 +116,7 @@ public class AddRecipientPage extends Fragment {
 
     public enum ContactsListHideReason {
         NO_CONTACTS,
+        NO_MATCH,
         CONTACTS_DISALLOWED
     }
 }
