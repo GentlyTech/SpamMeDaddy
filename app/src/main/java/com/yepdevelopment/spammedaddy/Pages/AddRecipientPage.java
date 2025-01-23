@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.R;
+import com.yepdevelopment.spammedaddy.Types.Contact;
 import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
 import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
@@ -81,10 +82,14 @@ public class AddRecipientPage extends Fragment {
                 return;
             }
             showContactsList();
-            binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), updatedList, null));
+            binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), updatedList, this::onContactCardClicked));
         });
 
         binding.recipientEditText.addTextChangedListener(new OnTextChangedListener((updatedValue) -> addRecipientPageViewModel.setRecipientFieldText(updatedValue.toString())));
+    }
+
+    private void onContactCardClicked(Contact contact) {
+
     }
 
     private void requestContactsPermission() {
