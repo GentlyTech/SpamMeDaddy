@@ -1,4 +1,4 @@
-package com.yepdevelopment.spammedaddy.Utils;
+package com.yepdevelopment.spammedaddy.Utils.Data;
 
 import android.Manifest;
 import android.content.ContentResolver;
