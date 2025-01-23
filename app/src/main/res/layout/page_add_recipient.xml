@@ -25,7 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/confirmRecipientButton"
         app:layout_constraintStart_toEndOf="@+id/recipientEditTextLeftHint"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -35,6 +35,21 @@
             android:layout_height="wrap_content"
             android:hint="@string/addRecipientPage_RecipientEditText_Hint_ContactsAllowed" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/confirmRecipientButton"
+        style="@android:style/Widget.Material.ImageButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:padding="8dp"
+        android:src="@drawable/baseline_send_24"
+        app:layout_constraintBottom_toBottomOf="@+id/recipientEditTextLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recipientEditTextLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/addRecipientsContactsList"
