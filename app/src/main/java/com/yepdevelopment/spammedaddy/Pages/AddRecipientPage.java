@@ -27,7 +27,7 @@ public class AddRecipientPage extends Fragment {
     AddRecipientPageViewModel addRecipientPageViewModel;
     PageAddRecipientBinding binding;
 
-    ActivityResultLauncher<String> requestContactsPermissionActivityResult = registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
+    ActivityResultLauncher<String> requestContactsPermissionActivityLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
         if (result) {
             addRecipientPageViewModel.setContactsList(getContacts(getContext()));
             showContactsList();
@@ -88,7 +88,7 @@ public class AddRecipientPage extends Fragment {
     }
 
     private void requestContactsPermission() {
-        requestContactsPermissionActivityResult.launch(Manifest.permission.READ_CONTACTS);
+        requestContactsPermissionActivityLauncher.launch(Manifest.permission.READ_CONTACTS);
     }
 
     public void showContactsList() {
