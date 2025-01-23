@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,15 @@ import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 public class AddRecipientPage extends Fragment {
     AddRecipientPageViewModel addRecipientPageViewModel;
     PageAddRecipientBinding binding;
+
+    ActivityResultLauncher<String> requestContactsPermissionActivityResult = registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
+        if (result) {
+            addRecipientPageViewModel.setContactsList(getContacts(getContext()));
+            showContactsList();
+        } else {
+            hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
+        }
+    });
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,13 +88,7 @@ public class AddRecipientPage extends Fragment {
     }
 
     private void requestContactsPermission() {
-        registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
-            if (result) {
-                showContactsList();
-            } else {
-                hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
-            }
-        }).launch(Manifest.permission.READ_CONTACTS);
+        requestContactsPermissionActivityResult.launch(Manifest.permission.READ_CONTACTS);
     }
 
     public void showContactsList() {
