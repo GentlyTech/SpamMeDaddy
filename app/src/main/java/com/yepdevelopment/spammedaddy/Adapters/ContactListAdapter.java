@@ -40,8 +40,11 @@ public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         Contact contact = contacts.get(position);
         if (contact == null) return;
 
-        String formattedPhoneNumber = PhoneNumberUtils.formatNumber(contact.getPhoneNumber(), "CA");
-        if (formattedPhoneNumber == null) formattedPhoneNumber = contact.getPhoneNumber();
+        List<String> phoneNumbers = contact.getPhoneNumbers();
+        String firstPhoneNumber = contact.getPhoneNumbers().get(0);
+
+        String formattedPhoneNumber = PhoneNumberUtils.formatNumber(firstPhoneNumber, "CA");
+        if (formattedPhoneNumber == null) formattedPhoneNumber = firstPhoneNumber;
 
         holder.getBinding().contactCardDisplayName.setText(contact.getName());
         holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
