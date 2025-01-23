@@ -14,10 +14,22 @@
         <action
             android:id="@+id/action_homeFragment_to_addRecipientPage"
             app:destination="@id/addRecipientPage" />
+        <action
+            android:id="@+id/action_homePage_to_recipientMessagesPage"
+            app:destination="@id/recipientMessagesPage" />
     </fragment>
     <fragment
         android:id="@+id/addRecipientPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.AddRecipientPage"
         android:label="@string/addRecipientPage_Title"
-        tools:layout="@layout/page_add_recipient" />
+        tools:layout="@layout/page_add_recipient" >
+        <action
+            android:id="@+id/action_addRecipientPage_to_recipientMessagesPage"
+            app:destination="@id/recipientMessagesPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipientMessagesPage"
+        android:name="com.yepdevelopment.spammedaddy.Pages.RecipientMessagesPage"
+        android:label="@string/recipientMessagesPage_Title"
+        tools:layout="@layout/page_recipient_messages" />
 </navigation>
