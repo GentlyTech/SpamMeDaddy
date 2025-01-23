@@ -14,6 +14,11 @@
         <attr name="vectorImageFill" format="color" />
     </declare-styleable>
 
+    <style name="customToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/darkerGray</item>
+    </style>
+
     <style name="customFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="tint">@color/white</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
