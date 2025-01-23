@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Contact;
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
@@ -48,6 +49,11 @@ public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<C
 
         holder.getBinding().contactCardDisplayName.setText(contact.getName());
         holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
+
+        if (phoneNumbers.size() > 1) {
+            holder.getBinding().contactCardOverflowText.setText(context.getString(R.string.contactCardPhoneNumberOverflowTextView_Text, phoneNumbers.size() - 1));
+            holder.getBinding().contactCardOverflowText.setVisibility(ViewGroup.VISIBLE);
+        }
 
         if (onClickHandler != null) {
             holder.getBinding().contactCardLayoutRoot.setOnClickListener((ignored) -> onClickHandler.accept(contact));

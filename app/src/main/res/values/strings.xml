@@ -12,6 +12,8 @@
     <string name="addRecipientPage_ContactsListStatusBody_NoContacts">It looks like you don\'t have any contacts</string>
     <string name="addRecipientPage_ContactsListStatusBody_ContactsDisallowed">You have chosen to disallow access to contacts in this app</string>
 
+    <string name="contactCardPhoneNumberOverflowTextView_Text">%1$d more…</string>
+
     <string name="homePage_Title">Home</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
 </resources>
