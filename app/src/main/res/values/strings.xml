@@ -18,4 +18,5 @@
 
     <string name="homePage_Title">Home</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
+    <string name="recipientMessagesPage_Title">Scheduled Messages</string>
 </resources>
