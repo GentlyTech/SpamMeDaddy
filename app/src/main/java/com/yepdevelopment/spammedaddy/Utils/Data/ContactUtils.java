@@ -63,7 +63,9 @@ public class ContactUtils {
         if (context == null) return new LinkedList<>();
         ContentResolver contentResolver = context.getContentResolver();
 
-        try (Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, ADD_RECIPIENTS_CONTACTS_PROJECTION, String.format("%s LIKE ? OR %s LIKE ?", ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER), new String[]{String.format("%%%s%%", query), String.format("%%%s%%", query)}, null)) {
+        String wildcardQuery = String.format("%%%s%%", query);
+
+        try (Cursor cursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, ADD_RECIPIENTS_CONTACTS_PROJECTION, String.format("%s LIKE ? OR %s LIKE ? OR %s LIKE ?", ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER), new String[]{wildcardQuery, wildcardQuery, wildcardQuery}, null)) {
             return processContactRowsFromCursor(cursor);
         }
     }
