@@ -1,4 +1,4 @@
-package com.yepdevelopment.failure.Utils.Android.TextChangedListeners;
+package com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners;
 
 import android.text.Editable;
 import android.text.TextWatcher;
