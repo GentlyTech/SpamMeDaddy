@@ -70,6 +70,11 @@ public class AddRecipientPage extends Fragment {
                 binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_NoContacts);
                 binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
                 break;
+            case NO_MATCH:
+                binding.addRecipientsContactsListStatusHeading.setText(R.string.addRecipientPage_ContactsListStatusHeading_NoMatch);
+                binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_NoMatch);
+                binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
+                break;
             case CONTACTS_DISALLOWED:
                 binding.addRecipientsContactsListStatusHeading.setText(R.string.addRecipientPage_ContactsListStatusHeading_ContactsDisallowed);
                 binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_ContactsDisallowed);
