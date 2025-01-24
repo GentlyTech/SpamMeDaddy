@@ -37,6 +37,7 @@ public class HomePage extends Fragment {
         requireActivity().addMenuProvider(new GeneralMenuProvider((menuItem -> {
             int menuItemId = menuItem.getItemId();
             if (menuItemId == R.id.menuItemAbout) {
+                navController.navigate(HomePageDirections.actionHomePageToAboutPage());
                 return true;
             }
             else if (menuItemId == R.id.menuItemDebug) {

@@ -2,4 +2,5 @@
 <resources>
     <string name="homePage_addRecipientFloatingActionButton_contentDescription">Add recipient</string>
     <string name="contactCardAvatar_contentDescription">User avatar</string>
+    <string name="contributorPhoto_contentDescription">Contributor photo</string>
 </resources>

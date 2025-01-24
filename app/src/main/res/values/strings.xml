@@ -39,6 +39,7 @@
 
     <!-- NavGraph Title Strings -->
     <string name="homePage_Title">Home</string>
+    <string name="aboutPage_Title">About</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
     <string name="recipientMessagesPage_Title">Scheduled Messages</string>
 </resources>
