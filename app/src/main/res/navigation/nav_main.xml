@@ -25,7 +25,7 @@
         android:id="@+id/addRecipientPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.AddRecipientPage"
         android:label="@string/addRecipientPage_Title"
-        tools:layout="@layout/page_add_recipient" >
+        tools:layout="@layout/page_add_recipient">
         <action
             android:id="@+id/action_addRecipientPage_to_recipientMessagesPage"
             app:destination="@id/recipientMessagesPage" />
@@ -38,5 +38,6 @@
     <fragment
         android:id="@+id/aboutPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.AboutPage"
-        android:label="@string/aboutPage_Title" />
+        android:label="@string/aboutPage_Title"
+        tools:layout="@layout/page_about" />
 </navigation>
