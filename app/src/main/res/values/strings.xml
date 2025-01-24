@@ -1,7 +1,7 @@
 <resources>
     <!-- Application Related Strings -->
     <string name="appName">SpamMeDaddy</string>
-    <string name="appDescription">Scheduled send, but on steroids.</string>
+    <string name="appDescription">Scheduled send, but on steroids.</string>\
 
     <!-- Common Strings -->
     <string name="about">About</string>
