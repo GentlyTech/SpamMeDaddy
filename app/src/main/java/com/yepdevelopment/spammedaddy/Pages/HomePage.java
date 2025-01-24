@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.yepdevelopment.spammedaddy.MenuProviders.GeneralMenuProvider;
 import com.yepdevelopment.spammedaddy.databinding.PageHomeBinding;
 
 public class HomePage extends Fragment {
@@ -32,6 +33,8 @@ public class HomePage extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        requireActivity().addMenuProvider(new GeneralMenuProvider(), getViewLifecycleOwner());
+
         hideRecipientsList(); // TODO remove and implement checking recipients list length and displaying accordingly
 
         binding.addRecipientFloatingActionButton.setOnClickListener((v) -> {
