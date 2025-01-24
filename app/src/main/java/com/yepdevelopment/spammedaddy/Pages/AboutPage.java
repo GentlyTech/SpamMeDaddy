@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContributorAdapter;
 import com.yepdevelopment.spammedaddy.Utils.Android.ResourceManipulator;
-import com.yepdevelopment.spammedaddy.databinding.FragmentAboutBinding;
+import com.yepdevelopment.spammedaddy.databinding.PageAboutBinding;
 
 public class AboutPage extends Fragment {
-    private FragmentAboutBinding binding;
+    private PageAboutBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class AboutPage extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentAboutBinding.inflate(inflater, container, false);
+        binding = PageAboutBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
