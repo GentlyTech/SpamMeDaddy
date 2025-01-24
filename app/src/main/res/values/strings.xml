@@ -16,6 +16,9 @@
 
     <string name="contactCardPhoneNumberOverflowTextView_Text">%1$d more…</string>
 
+    <string name="menuItem_About">About</string>
+    <string name="menuItem_Debug">Debug</string>
+
     <string name="homePage_Title">Home</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
     <string name="recipientMessagesPage_Title">Scheduled Messages</string>
