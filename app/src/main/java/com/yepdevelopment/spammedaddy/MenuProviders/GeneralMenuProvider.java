@@ -1,18 +1,14 @@
 package com.yepdevelopment.spammedaddy.MenuProviders;
 
-import android.content.Context;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.MenuProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.yepdevelopment.spammedaddy.R;
 
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class GeneralMenuProvider implements MenuProvider {
