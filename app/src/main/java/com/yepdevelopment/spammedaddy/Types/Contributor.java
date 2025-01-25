@@ -1,7 +1,7 @@
 package com.yepdevelopment.spammedaddy.Types;
 
 /**
- * This is not a database entity. I just wasn't sure where else to put it.
+ * This is not a database entity.
  */
 public class Contributor {
     private final String name;
