@@ -36,4 +36,8 @@ public class Contact {
     public void addPhoneNumber(String phoneNumber) {
         phoneNumbers.add(phoneNumber);
     }
+
+    public void clearPhoneNumbers() {
+        phoneNumbers.clear();
+    }
 }
