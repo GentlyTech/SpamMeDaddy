@@ -1,6 +1,7 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContributorAdapter;
+import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Utils.Android.ResourceManipulator;
 import com.yepdevelopment.spammedaddy.databinding.PageAboutBinding;
 
-public class AboutPage extends Fragment {
-    private PageAboutBinding binding;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = PageAboutBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-    }
-
+public class AboutPage extends Page<PageAboutBinding> {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         binding.contributorsList.setLayoutManager(new LinearLayoutManager(requireContext()));

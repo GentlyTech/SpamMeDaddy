@@ -19,14 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
 import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 
-public class AddRecipientPage extends Fragment {
+public class AddRecipientPage extends Page<PageAddRecipientBinding> {
     AddRecipientPageViewModel addRecipientPageViewModel;
-    PageAddRecipientBinding binding;
 
     ActivityResultLauncher<String> requestContactsPermissionActivityLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
         if (result) {
@@ -46,13 +46,6 @@ public class AddRecipientPage extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         addRecipientPageViewModel.setRecipientFieldText("");
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = PageAddRecipientBinding.inflate(inflater, container, false);
-        return binding.getRoot();
     }
 
     @Override
