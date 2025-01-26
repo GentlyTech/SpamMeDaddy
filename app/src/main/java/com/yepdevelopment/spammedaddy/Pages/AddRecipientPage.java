@@ -4,21 +4,18 @@ import static com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils.getContacts
 
 import android.Manifest;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
 import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;

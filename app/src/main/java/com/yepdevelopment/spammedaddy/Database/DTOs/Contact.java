@@ -1,4 +1,4 @@
-package com.yepdevelopment.spammedaddy.Types;
+package com.yepdevelopment.spammedaddy.Database.DTOs;
 
 import java.util.Arrays;
 import java.util.Collections;

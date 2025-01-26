@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
 

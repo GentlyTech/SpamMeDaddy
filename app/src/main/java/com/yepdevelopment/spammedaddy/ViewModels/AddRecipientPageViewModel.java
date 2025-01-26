@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class AddRecipientPageViewModel extends ViewModel {

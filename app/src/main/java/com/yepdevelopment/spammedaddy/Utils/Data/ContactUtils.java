@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
-import com.yepdevelopment.spammedaddy.Types.Contact;
+import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 
 import java.util.Comparator;
 import java.util.HashMap;
