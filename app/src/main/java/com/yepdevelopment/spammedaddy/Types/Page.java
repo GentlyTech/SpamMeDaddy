@@ -36,6 +36,10 @@ public abstract class Page<T extends ViewBinding> extends Fragment {
                 Log.e(getClass().getName(), "No superclass");
                 return null;
             }
+            if (!(superClass instanceof ParameterizedType)) {
+                Log.e(getClass().getName(), "Superclass is not of a parameterized type (did you forget to supply the ViewBinding type argument?");
+                return null;
+            }
             Type[] genericTypes = ((ParameterizedType) superClass).getActualTypeArguments();
             if (genericTypes.length == 0) {
                 Log.e(getClass().getName(), "Binding type parameter not supplied");
