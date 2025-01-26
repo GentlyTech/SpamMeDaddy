@@ -12,8 +12,10 @@ import java.util.List;
 public class ContactWithData {
     @Embedded
     public Contact contact;
+
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
     public List<PhoneNumber> phoneNumbers;
+
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
     public List<Message> messages;
 }

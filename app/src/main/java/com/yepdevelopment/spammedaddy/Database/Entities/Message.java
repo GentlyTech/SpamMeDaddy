@@ -9,7 +9,10 @@ import java.time.LocalDateTime;
 public class Message {
     @PrimaryKey
     public String messageId;
+
     public String contactId;
+
     public LocalDateTime messageScheduledSendTime;
+
     public String messageContent;
 }

@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 public class PhoneNumber {
     @PrimaryKey
     public String phoneNumberId;
+
     public String contactId;
+
     public String phoneNumber;
 }
