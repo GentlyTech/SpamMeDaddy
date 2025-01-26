@@ -4,7 +4,7 @@ import androidx.room.PrimaryKey;
 
 public class Contact {
     @PrimaryKey
-    String contactId;
+    public String contactId;
 
-    String contactName;
+    public String contactName;
 }
