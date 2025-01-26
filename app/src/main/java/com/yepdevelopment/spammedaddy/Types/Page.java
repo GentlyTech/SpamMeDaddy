@@ -33,7 +33,7 @@ public abstract class Page<T extends ViewBinding> extends Fragment {
         try {
             Type superClass = getClass().getGenericSuperclass();
             if (superClass == null) {
-                Log.e(getClass().getName(), "No superclass");
+                Log.e(getClass().getName(), "No superclass (this should never happen)");
                 return null;
             }
             if (!(superClass instanceof ParameterizedType)) {
@@ -42,7 +42,7 @@ public abstract class Page<T extends ViewBinding> extends Fragment {
             }
             Type[] genericTypes = ((ParameterizedType) superClass).getActualTypeArguments();
             if (genericTypes.length == 0) {
-                Log.e(getClass().getName(), "Binding type parameter not supplied");
+                Log.e(getClass().getName(), "ViewBinding type parameter not supplied");
                 return null;
             }
             Class<T> bindingType = (Class<T>) genericTypes[0];
@@ -50,7 +50,7 @@ public abstract class Page<T extends ViewBinding> extends Fragment {
 
             binding = (T) inflateMethod.invoke(null, inflater, container, false);
             if (binding == null) {
-                Log.e(getClass().getName(), "Binding inflate call returned null");
+                Log.e(getClass().getName(), "ViewBinding inflate call returned null");
                 return null;
             }
             return binding.getRoot();
