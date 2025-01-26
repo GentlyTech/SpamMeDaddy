@@ -31,7 +31,6 @@ public class AddRecipientPage extends Fragment {
     ActivityResultLauncher<String> requestContactsPermissionActivityLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), (result) -> {
         if (result) {
             addRecipientPageViewModel.setContactsList(getContacts(getContext()));
-            showContactsList();
         } else {
             hideContactsList(ContactsListHideReason.CONTACTS_DISALLOWED);
         }
