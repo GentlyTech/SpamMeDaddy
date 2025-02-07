@@ -51,7 +51,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<C
         String formattedPhoneNumber = PhoneNumberUtils.formatNumber(firstPhoneNumber.getPhoneNumber(), "CA");
         if (formattedPhoneNumber == null) formattedPhoneNumber = firstPhoneNumber.getPhoneNumber();
 
-        holder.getBinding().contactCardDisplayName.setText(contact.getContact().getContactName()); // FIXME if you encounter weird issues with Contact try investigating here
+        holder.getBinding().contactCardDisplayName.setText(contact.getContact().getContactName());
         holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
 
         if (phoneNumbers.size() > 1) {
