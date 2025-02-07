@@ -9,13 +9,16 @@ import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 
 import java.util.List;
 
+import lombok.Getter;
+
+@Getter
 public class ContactWithData {
     @Embedded
-    public Contact contact;
+    private Contact contact;
 
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
-    public List<PhoneNumber> phoneNumbers;
+    private List<PhoneNumber> phoneNumbers;
 
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
-    public List<Message> messages;
+    private List<Message> messages;
 }
