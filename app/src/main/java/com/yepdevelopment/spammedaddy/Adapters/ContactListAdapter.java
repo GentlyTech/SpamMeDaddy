@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
+import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
 
@@ -19,10 +20,10 @@ import java.util.function.Consumer;
 
 public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentContactCardBinding>> {
     Context context;
-    List<Contact> contacts;
-    Consumer<Contact> onClickHandler;
+    List<ContactWithData> contacts;
+    Consumer<ContactWithData> onClickHandler;
 
-    public ContactListAdapter(Context context, List<Contact> contacts, Consumer<Contact> onClickHandler) {
+    public ContactListAdapter(Context context, List<ContactWithData> contacts, Consumer<ContactWithData> onClickHandler) {
         this.context = context;
         this.contacts = contacts != null ? contacts : new LinkedList<>();
         this.onClickHandler = onClickHandler;
@@ -38,16 +39,19 @@ public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<C
 
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentContactCardBinding> holder, int position) {
-        Contact contact = contacts.get(position);
+        ContactWithData contact = contacts.get(position);
         if (contact == null) return;
 
-        List<String> phoneNumbers = contact.getPhoneNumbers();
-        String firstPhoneNumber = contact.getPhoneNumbers().get(0);
+        List<PhoneNumber> phoneNumbers = contact.getPhoneNumbers();
+        if (phoneNumbers == null || phoneNumbers.isEmpty()) return;
 
-        String formattedPhoneNumber = PhoneNumberUtils.formatNumber(firstPhoneNumber, "CA");
-        if (formattedPhoneNumber == null) formattedPhoneNumber = firstPhoneNumber;
+        PhoneNumber firstPhoneNumber = contact.getPhoneNumbers().get(0);
+        if (firstPhoneNumber == null) return;
 
-        holder.getBinding().contactCardDisplayName.setText(contact.getName());
+        String formattedPhoneNumber = PhoneNumberUtils.formatNumber(firstPhoneNumber.getPhoneNumber(), "CA");
+        if (formattedPhoneNumber == null) formattedPhoneNumber = firstPhoneNumber.getPhoneNumber();
+
+        holder.getBinding().contactCardDisplayName.setText(contact.getContact().getContactName()); // FIXME if you encounter weird issues with Contact try investigating here
         holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
 
         if (phoneNumbers.size() > 1) {

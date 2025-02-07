@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
-import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
+import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -22,35 +22,37 @@ public class ContactUtils {
             ContactsContract.CommonDataKinds.Phone.NUMBER
     };
 
-    private static List<Contact> processContactRowsFromCursor(Cursor cursor) {
+    private static List<ContactWithData> processContactRowsFromCursor(Cursor cursor) {
         if (cursor == null) return new LinkedList<>();
 
-        Map<String, Contact> contactMap = new HashMap<>();
+        Map<String, ContactWithData> contactMap = new HashMap<>();
 
         final int nameIndex = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME);
         final int phoneNumberIndex = cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER);
 
         while (cursor.moveToNext()) {
-            Contact contact;
+            ContactWithData contact;
             String displayName = cursor.getString(nameIndex);
             String phoneNumber = cursor.getString(phoneNumberIndex);
 
             if (contactMap.containsKey(displayName)) {
                 contact = contactMap.get(displayName);
-                if (contact == null) continue;
-                contact.addPhoneNumber(phoneNumber);
-                continue;
             }
-            contact = new Contact(displayName, phoneNumber);
-            contactMap.put(displayName, contact);
+            else {
+                contact = ContactWithData.newInstance(displayName);
+                contactMap.put(displayName, contact);
+            }
+
+            if (contact == null) continue;
+            contact.addPhoneNumber(phoneNumber);
         }
 
-        List<Contact> contacts = new LinkedList<>(contactMap.values());
-        contacts.sort(Comparator.comparing(Contact::getName));
+        List<ContactWithData> contacts = new LinkedList<>(contactMap.values());
+        contacts.sort(Comparator.comparing(ContactWithData::getContact));
         return contacts;
     }
 
-    public static List<Contact> getContacts(Context context) {
+    public static List<ContactWithData> getContacts(Context context) {
         if (context == null) return new LinkedList<>();
         ContentResolver contentResolver = context.getContentResolver();
 
@@ -59,7 +61,7 @@ public class ContactUtils {
         }
     }
 
-    public static List<Contact> getContacts(Context context, String query) {
+    public static List<ContactWithData> getContacts(Context context, String query) {
         if (context == null) return new LinkedList<>();
         ContentResolver contentResolver = context.getContentResolver();
 

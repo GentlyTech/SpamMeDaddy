@@ -4,8 +4,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
+import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 
 import java.util.List;
 
@@ -19,5 +21,9 @@ public interface ContactDao {
 
     @Query("SELECT * FROM contact")
     List<Contact> getAll();
+
+    @Transaction
+    @Query("SELECT * FROM contact")
+    List<ContactWithData> getAllWithData();
 
 }

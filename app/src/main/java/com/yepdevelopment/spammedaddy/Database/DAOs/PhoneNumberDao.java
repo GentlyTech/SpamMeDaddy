@@ -26,6 +26,6 @@ public abstract class PhoneNumberDao {
 
 
     List<PhoneNumber> getPhoneNumberssForContact(Contact contact) {
-        return getPhoneNumbersByContactId(contact.contactId);
+        return getPhoneNumbersByContactId(contact.getContactId());
     }
 }

@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
+import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Database.DTOs.Contact;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
 import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
@@ -77,7 +77,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
         binding.recipientEditText.addTextChangedListener(new OnTextChangedListener((updatedValue) -> addRecipientPageViewModel.setRecipientFieldText(updatedValue.toString())));
     }
 
-    private void onContactCardClicked(Contact contact) {
+    private void onContactCardClicked(ContactWithData contact) {
 
     }
 
