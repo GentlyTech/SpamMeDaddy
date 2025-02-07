@@ -5,14 +5,19 @@ import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 public class Message {
     @PrimaryKey
-    public String messageId;
+    private String messageId;
 
-    public String contactId;
+    private String contactId;
 
-    public LocalDateTime messageScheduledSendTime;
+    private LocalDateTime messageScheduledSendTime;
 
-    public String messageContent;
+    private String messageContent;
 }

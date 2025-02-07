@@ -3,12 +3,17 @@ package com.yepdevelopment.spammedaddy.Database.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 public class PhoneNumber {
     @PrimaryKey
-    public String phoneNumberId;
+    private String phoneNumberId;
 
-    public String contactId;
+    private String contactId;
 
-    public String phoneNumber;
+    private String phoneNumber;
 }
