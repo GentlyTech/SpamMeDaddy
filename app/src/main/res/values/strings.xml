@@ -6,6 +6,7 @@
     <!-- Common Strings -->
     <string name="about">About</string>
     <string name="add">Add</string>
+    <string name="back">Back</string>
     <string name="cancel">Cancel</string>
     <string name="complete">Complete</string>
     <string name="contributors">Contributors</string>
@@ -13,6 +14,8 @@
     <string name="delete">Delete</string>
     <string name="done">Done</string>
     <string name="edit">Edit</string>
+    <string name="error">Error</string>
+    <string name="_return">Return</string> <!-- Underscore is needed since "return" is a reserved java keyword" -->
     <string name="save">Save</string>
 
     <!-- Home Page Strings -->
