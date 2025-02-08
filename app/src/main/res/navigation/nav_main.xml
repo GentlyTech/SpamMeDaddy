@@ -40,4 +40,9 @@
         android:name="com.yepdevelopment.spammedaddy.Pages.AboutPage"
         android:label="@string/aboutPage_Title"
         tools:layout="@layout/page_about" />
+    <fragment
+        android:id="@+id/errorPage"
+        android:name="com.yepdevelopment.spammedaddy.Pages.ErrorPage"
+        android:label="page_error"
+        tools:layout="@layout/page_error" />
 </navigation>

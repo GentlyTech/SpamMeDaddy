@@ -33,6 +33,10 @@
     <string name="addRecipientPage_ContactsListStatusHeading_NoMatch">No Matches</string>
     <string name="addRecipientPage_ContactsListStatusBody_NoMatch">We could\'t find any contacts matching the name/phone number</string>
 
+    <!-- Error Page Strings -->
+    <string name="errorPage_ErrorHeading">@string/error</string>
+    <string name="errorPage_ErrorBody">An unexpected error occurred.</string>
+
     <!-- Contact Card Strings -->
     <string name="contactCardPhoneNumberOverflowTextView_Text">%1$d more…</string>
 
@@ -43,6 +47,7 @@
     <!-- NavGraph Title Strings -->
     <string name="homePage_Title">Home</string>
     <string name="aboutPage_Title">About</string>
+    <string name="errorPage_Title">@string/error</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
     <string name="recipientMessagesPage_Title">Scheduled Messages</string>
 </resources>
