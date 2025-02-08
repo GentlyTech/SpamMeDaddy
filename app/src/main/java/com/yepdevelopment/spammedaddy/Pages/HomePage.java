@@ -35,11 +35,11 @@ public class HomePage extends Page<PageHomeBinding> {
 
     public void showRecipientsList() {
         binding.homeRecipientsList.setVisibility(View.VISIBLE);
-        binding.homeRecipientsListStatusLayout.setVisibility(View.GONE);
+        binding.homeRecipientsListStatusGroup.setVisibility(View.GONE);
     }
 
     public void hideRecipientsList() {
         binding.homeRecipientsList.setVisibility(View.GONE);
-        binding.homeRecipientsListStatusLayout.setVisibility(View.VISIBLE);
+        binding.homeRecipientsListStatusGroup.setVisibility(View.VISIBLE);
     }
 }

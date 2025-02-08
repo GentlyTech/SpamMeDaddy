@@ -87,7 +87,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
 
     public void showContactsList() {
         binding.addRecipientsContactsList.setVisibility(View.VISIBLE);
-        binding.addRecipientsContactsListStatusLayout.setVisibility(View.GONE);
+        binding.addRecipientsContactListStatusGroup.setVisibility(View.GONE);
     }
 
     public void hideContactsList(ContactsListHideReason reason) {
@@ -97,17 +97,17 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
             case NO_CONTACTS:
                 binding.addRecipientsContactsListStatusHeading.setText(R.string.addRecipientPage_ContactsListStatusHeading_NoContacts);
                 binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_NoContacts);
-                binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
+                binding.addRecipientsContactListStatusGroup.setVisibility(View.VISIBLE);
                 break;
             case NO_MATCH:
                 binding.addRecipientsContactsListStatusHeading.setText(R.string.addRecipientPage_ContactsListStatusHeading_NoMatch);
                 binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_NoMatch);
-                binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
+                binding.addRecipientsContactListStatusGroup.setVisibility(View.VISIBLE);
                 break;
             case CONTACTS_DISALLOWED:
                 binding.addRecipientsContactsListStatusHeading.setText(R.string.addRecipientPage_ContactsListStatusHeading_ContactsDisallowed);
                 binding.addRecipientsContactsListStatusBody.setText(R.string.addRecipientPage_ContactsListStatusBody_ContactsDisallowed);
-                binding.addRecipientsContactsListStatusLayout.setVisibility(View.VISIBLE);
+                binding.addRecipientsContactListStatusGroup.setVisibility(View.VISIBLE);
                 break;
         }
     }

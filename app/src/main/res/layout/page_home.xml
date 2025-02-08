@@ -35,40 +35,43 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <LinearLayout
-        android:id="@+id/homeRecipientsListStatusLayout"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/homeRecipientsListStatusHeading"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="@string/homePage_RecipientsListStatusHeading"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/homeRecipientsListStatusBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/homeRecipientsListStatusBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
+        android:gravity="center"
+        android:text="@string/homePage_RecipientsListStatusBody"
+        android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/homeRecipientsListStatusHeading" />
 
-        <TextView
-            android:id="@+id/homeRecipientsListStatusHeading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="center"
-            android:text="@string/homePage_RecipientsListStatusHeading"
-            android:textSize="20sp"
-            android:visibility="visible" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/homeRecipientsListStatusGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="homeRecipientsListStatusHeading,homeRecipientsListStatusBody" />
 
-        <TextView
-            android:id="@+id/homeRecipientsListStatusBody"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:gravity="center"
-            android:text="@string/homePage_RecipientsListStatusBody"
-            android:textColor="@color/gray"
-            android:visibility="visible" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
