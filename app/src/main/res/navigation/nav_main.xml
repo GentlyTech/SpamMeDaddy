@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_addRecipientPage_to_recipientMessagesPage"
             app:destination="@id/recipientMessagesPage" />
+        <action
+            android:id="@+id/action_addRecipientPage_to_numberSelectionPage"
+            app:destination="@id/numberSelectionPage" />
     </fragment>
     <fragment
         android:id="@+id/recipientMessagesPage"
@@ -40,6 +43,19 @@
         android:name="com.yepdevelopment.spammedaddy.Pages.AboutPage"
         android:label="@string/aboutPage_Title"
         tools:layout="@layout/page_about" />
+    <fragment
+        android:id="@+id/numberSelectionPage"
+        android:name="com.yepdevelopment.spammedaddy.Pages.NumberSelectionPage"
+        android:label="@string/numberSelectionPage_Title"
+        tools:layout="@layout/page_number_selection">
+        <action
+            android:id="@+id/action_numberSelectionPage_to_recipientMessagesPage"
+            app:destination="@id/recipientMessagesPage" />
+        <action
+            android:id="@+id/action_numberSelectionPage_to_errorPage"
+            app:destination="@id/errorPage"
+            app:popUpTo="@id/addRecipientPage" />
+    </fragment>
     <fragment
         android:id="@+id/errorPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.ErrorPage"

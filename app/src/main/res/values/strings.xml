@@ -50,4 +50,5 @@
     <string name="errorPage_Title">@string/error</string>
     <string name="addRecipientPage_Title">Add Recipient</string>
     <string name="recipientMessagesPage_Title">Scheduled Messages</string>
+    <string name="numberSelectionPage_Title">Select Phone Numbers</string>
 </resources>
