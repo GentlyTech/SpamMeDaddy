@@ -37,29 +37,34 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:text="Name"
+            app:layout_constraintBottom_toTopOf="@+id/contactCardPhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/contactCardAvatar"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/contactCardPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Phone Number"
+            app:layout_constraintBottom_toTopOf="@+id/contactCardOverflowText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/contactCardAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/contactCardDisplayName" />
+            app:layout_constraintTop_toBottomOf="@+id/contactCardDisplayName"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/contactCardOverflowText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="x more..."
