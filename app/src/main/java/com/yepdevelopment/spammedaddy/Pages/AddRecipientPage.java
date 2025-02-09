@@ -78,7 +78,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
     }
 
     private void onContactCardClicked(ContactWithData contact) {
-
+        navController.navigate(AddRecipientPageDirections.actionAddRecipientPageToNumberSelectionPage()); // TODO actually implement this
     }
 
     private void requestContactsPermission() {
