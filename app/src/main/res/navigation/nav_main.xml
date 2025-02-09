@@ -59,6 +59,6 @@
     <fragment
         android:id="@+id/errorPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.ErrorPage"
-        android:label="page_error"
+        android:label="@string/errorPage_Title"
         tools:layout="@layout/page_error" />
 </navigation>
