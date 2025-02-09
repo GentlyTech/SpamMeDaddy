@@ -6,6 +6,9 @@ import androidx.room.Relation;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Entities.Message;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
+import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
+
+import org.json.JSONObject;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +17,7 @@ import java.util.UUID;
 import lombok.Getter;
 
 @Getter
-public class ContactWithData {
+public class ContactWithData implements JSONSerializable {
     @Embedded
     private Contact contact;
 
@@ -44,5 +47,13 @@ public class ContactWithData {
         contactWithData.messages = new LinkedList<>();
 
         return contactWithData;
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+
+
+
+        return jsonObject;
     }
 }
