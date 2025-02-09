@@ -40,6 +40,9 @@
     <!-- Contact Card Strings -->
     <string name="contactCardPhoneNumberOverflowTextView_Text">%1$d more…</string>
 
+    <!-- NumberSelection Page Strings -->
+    <string name="numberSelectionPage_ErrorPageBody_NoContact">The selected contact does not have any valid phone numbers.</string>
+
     <!-- Menu Item Strings -->
     <string name="menuItem_About">About</string>
     <string name="menuItem_Debug">Debug</string>
