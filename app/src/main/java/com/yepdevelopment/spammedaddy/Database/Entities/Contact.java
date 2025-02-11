@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import lombok.Getter;
@@ -36,7 +38,12 @@ public class Contact implements Comparable<Contact>, JSONSerializable {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
 
-        // TODO implement method
+        try {
+            jsonObject.put("contactId", contactId);
+            jsonObject.put("contactName", contactName);
+        } catch (JSONException ignored) {
+
+        }
 
         return jsonObject;
     }
