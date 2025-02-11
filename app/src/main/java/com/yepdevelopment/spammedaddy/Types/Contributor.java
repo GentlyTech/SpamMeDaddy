@@ -1,8 +1,11 @@
 package com.yepdevelopment.spammedaddy.Types;
 
+import lombok.Getter;
+
 /**
  * This is not a database entity.
  */
+@Getter
 public class Contributor {
     private final String name;
     private final String role;
@@ -55,15 +58,4 @@ public class Contributor {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public String getImageUri() {
-        return imageUri;
-    }
 }
