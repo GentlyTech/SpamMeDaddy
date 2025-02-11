@@ -15,8 +15,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
 
 //        if (args == null) { // TODO implement checking whether a valid ContactWithData was actually passed rather than always showing error page
             Bundle errorPageArgs = new Bundle();
-            errorPageArgs.putString("bodyMessage", getString(R.string.numberSelectionPage_ErrorPageBody_NoContact));
-
+            errorPageArgs.putString(ErrorPage.ARGS.BODY.getValue(), getString(R.string.numberSelectionPage_ErrorPageBody_NoContact));
             navController.navigate(R.id.action_numberSelectionPage_to_errorPage, errorPageArgs);
 //        }
     }

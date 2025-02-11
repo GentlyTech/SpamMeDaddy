@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageErrorBinding;
 
+import lombok.Getter;
+
 public class ErrorPage extends Page<PageErrorBinding> {
     private String headingMessage = null;
     private String bodyMessage = null;
@@ -21,8 +23,8 @@ public class ErrorPage extends Page<PageErrorBinding> {
         Bundle args = getArguments();
 
         if (args != null) {
-            headingMessage = args.getString("headingMessage");
-            bodyMessage = args.getString("bodyMessage");
+            headingMessage = args.getString(ARGS.HEADING.getValue());
+            bodyMessage = args.getString(ARGS.BODY.getValue());
         }
     }
 
@@ -37,5 +39,17 @@ public class ErrorPage extends Page<PageErrorBinding> {
         }
 
         binding.errorBackButton.setOnClickListener(ignored -> navController.popBackStack());
+    }
+
+    @Getter
+    public enum ARGS {
+        HEADING("headingMessage"),
+        BODY("bodyMessage");
+
+        private final String value;
+
+        ARGS(String value) {
+            this.value = value;
+        }
     }
 }
