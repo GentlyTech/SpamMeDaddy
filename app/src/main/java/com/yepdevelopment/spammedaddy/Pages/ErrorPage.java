@@ -31,7 +31,7 @@ public class ErrorPage extends Page<PageErrorBinding> {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         if (headingMessage != null) {
-            binding.errorTextHeader.setText(headingMessage);
+            binding.errorTextHeading.setText(headingMessage);
         }
 
         if (bodyMessage != null) {
