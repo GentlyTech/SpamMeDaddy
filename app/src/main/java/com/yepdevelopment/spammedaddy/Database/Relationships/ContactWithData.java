@@ -52,8 +52,16 @@ public class ContactWithData implements JSONSerializable {
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
 
-
+        // TODO implement method
 
         return jsonObject;
+    }
+
+    public static ContactWithData fromJson(JSONObject jsonObject) {
+        return null; // TODO implement method
+    }
+
+    public static ContactWithData fromJson(String jsonString) {
+        return null; // TODO implement method
     }
 }
