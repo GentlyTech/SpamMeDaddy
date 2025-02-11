@@ -78,7 +78,9 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
     }
 
     private void onContactCardClicked(ContactWithData contact) {
-        navController.navigate(AddRecipientPageDirections.actionAddRecipientPageToNumberSelectionPage()); // TODO actually implement this
+        Bundle args = new Bundle();
+        args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), contact.toJson().toString());
+        navController.navigate(R.id.numberSelectionPage, args);
     }
 
     private void requestContactsPermission() {
