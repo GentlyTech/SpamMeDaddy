@@ -3,7 +3,6 @@ package com.yepdevelopment.spammedaddy.Database.Entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
 import org.json.JSONObject;
@@ -22,6 +21,14 @@ public class PhoneNumber implements JSONSerializable {
 
     private String phoneNumber;
 
+    public static PhoneNumber fromJson(JSONObject jsonObject) {
+        return null; // TODO implement method
+    }
+
+    public static PhoneNumber fromJson(String jsonString) {
+        return null; // TODO implement method
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
@@ -29,13 +36,5 @@ public class PhoneNumber implements JSONSerializable {
         // TODO implement method
 
         return jsonObject;
-    }
-
-    public static ContactWithData fromJson(JSONObject jsonObject) {
-        return null; // TODO implement method
-    }
-
-    public static ContactWithData fromJson(String jsonString) {
-        return null; // TODO implement method
     }
 }
