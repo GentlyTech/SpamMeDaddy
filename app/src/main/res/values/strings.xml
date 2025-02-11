@@ -41,7 +41,8 @@
     <string name="contactCardPhoneNumberOverflowTextView_Text">%1$d more…</string>
 
     <!-- NumberSelection Page Strings -->
-    <string name="numberSelectionPage_ErrorPageBody_NoContact">The selected contact does not have any valid phone numbers.</string>
+    <string name="numberSelectionPage_ErrorPageHeading_NoContact">No Contact Selected</string>
+    <string name="numberSelectionPage_ErrorPageBody_NoContact">This page is missing contact information that is needed to function. Please go back and try again.</string>
 
     <!-- Menu Item Strings -->
     <string name="menuItem_About">About</string>
