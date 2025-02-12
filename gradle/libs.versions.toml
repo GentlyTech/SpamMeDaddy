@@ -13,7 +13,6 @@ navigationUi = "2.8.6"
 room = "2.6.1"
 lombok = "1.18.36"
 gson = "2.12.1"
-roomCompiler = "2.6.1"
 guava = "33.4.0-jre"
 
 [libraries]
@@ -30,8 +29,9 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-guava = { group = "androidx.room", name = "room-guava", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

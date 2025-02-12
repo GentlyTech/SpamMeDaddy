@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.gson)
     implementation(libs.guava)
+    implementation(libs.room.guava)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
     annotationProcessor(libs.room.compiler)
