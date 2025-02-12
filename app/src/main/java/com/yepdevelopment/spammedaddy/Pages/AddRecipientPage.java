@@ -13,8 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.gson.JsonObject;
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
+import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
@@ -81,11 +83,9 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
 
     private void onContactCardClicked(ContactWithData contact) {
         Bundle args = new Bundle();
-        JSONObject serializedContact = contact.toJson();
+        String serializedContact = CustomSerializer.getCustomSerializer().toJson(contact);
 
-        if (serializedContact != null) {
-            args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), serializedContact.toString());
-        }
+        args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), serializedContact);
 
         navController.navigate(R.id.numberSelectionPage, args);
     }

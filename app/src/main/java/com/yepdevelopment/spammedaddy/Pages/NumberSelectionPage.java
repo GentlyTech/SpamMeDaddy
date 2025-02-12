@@ -3,9 +3,9 @@ package com.yepdevelopment.spammedaddy.Pages;
 import android.os.Bundle;
 
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
+import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
-import com.yepdevelopment.spammedaddy.Utils.Data.SerializationUtils;
 import com.yepdevelopment.spammedaddy.databinding.PageNumberSelectionBinding;
 
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         }
 
         String rawContactWithData = args.getString(ARGS.CONTACT.getValue());
-        ContactWithData contact = SerializationUtils.fromJson(rawContactWithData, ContactWithData.class);
+        ContactWithData contact = CustomSerializer.getCustomSerializer().fromJson(rawContactWithData, ContactWithData.class);
         if (contact == null) {
             navigateToErrorPage();
             return;
