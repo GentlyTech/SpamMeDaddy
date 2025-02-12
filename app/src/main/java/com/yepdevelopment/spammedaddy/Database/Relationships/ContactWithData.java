@@ -3,6 +3,7 @@ package com.yepdevelopment.spammedaddy.Database.Relationships;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
+import com.yepdevelopment.spammedaddy.Annotations.DoNotSerialize;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Entities.Message;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
@@ -18,12 +19,16 @@ import lombok.Getter;
 
 @Getter
 public class ContactWithData extends JSONSerializable {
+    // TODO figure out how to serialize these fields
     @Embedded
+    @DoNotSerialize
     private Contact contact;
 
+    @DoNotSerialize
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
     private List<PhoneNumber> phoneNumbers;
 
+    @DoNotSerialize
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
     private List<Message> messages;
 
