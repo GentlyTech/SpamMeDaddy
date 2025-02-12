@@ -13,8 +13,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.LinkedList;
 
 public class SerializationUtils {
@@ -73,20 +72,14 @@ public class SerializationUtils {
                         if (value instanceof JSONArray) {
                             JSONArray jsonArray = (JSONArray) value;
 
-                            ParameterizedType superClass = (ParameterizedType) (fieldType.getGenericSuperclass());
+                            TypeVariable<?>[] typeVariables = fieldType.getTypeParameters();
 
-                            if (superClass == null) {
-                                Log.e(SerializationUtils.class.getName(), String.format("Unable to map JSONArray to field %s because field is missing type parameter (checkpoint 1)", key));
+                            if (typeVariables.length == 0) {
+                                Log.e(SerializationUtils.class.getName(), String.format("Unable to map JSONArray to field %s because field is missing type parameter", key));
                                 continue;
                             }
 
-                            Type[] genericTypes = superClass.getActualTypeArguments();
-                            if (genericTypes.length == 0) {
-                                Log.e(SerializationUtils.class.getName(), String.format("Unable to map JSONArray to field %s because field is missing type parameter (checkpoint 2)", key));
-                                continue;
-                            }
-
-                            Class<?> bindingType = (Class<?>) genericTypes[0];
+                            Class<?> bindingType = typeVariables[0].getClass();
 
                             LinkedList<Object> deserializedValues = new LinkedList<>();
 
