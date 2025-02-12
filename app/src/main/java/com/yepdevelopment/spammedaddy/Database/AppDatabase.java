@@ -20,11 +20,4 @@ public abstract class AppDatabase extends RoomDatabase {
     public MessageDao messageDao;
 
     public PhoneNumberDao phoneNumberDao;
-
-    public void insertContactWithData(ContactWithData data) {
-        if (data == null) return;
-        contactDAO.insertAll(data.getContact());
-        phoneNumberDao.insertAll(data.getPhoneNumbers());
-        messageDao.insertAll(data.getMessages());
-    }
 }
