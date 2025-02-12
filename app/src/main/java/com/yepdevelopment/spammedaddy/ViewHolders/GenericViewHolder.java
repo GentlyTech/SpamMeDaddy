@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
+import lombok.Getter;
+
+@Getter
 public class GenericViewHolder<T extends ViewBinding> extends RecyclerView.ViewHolder {
     private final T binding;
 
@@ -12,7 +15,4 @@ public class GenericViewHolder<T extends ViewBinding> extends RecyclerView.ViewH
         this.binding = binding;
     }
 
-    public T getBinding() {
-        return binding;
-    }
 }
