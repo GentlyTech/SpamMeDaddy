@@ -3,11 +3,15 @@ package com.yepdevelopment.spammedaddy.Database.Relationships;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import com.yepdevelopment.spammedaddy.Annotations.DoNotSerialize;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Entities.Message;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
+
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -18,17 +22,14 @@ import lombok.Getter;
 
 @Getter
 public class ContactWithData extends JSONSerializable {
-    // TODO figure out how to serialize these fields
     @Embedded
-    private Contact contact;
+    private Contact contact = null;
 
-    @DoNotSerialize
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
-    private List<PhoneNumber> phoneNumbers;
+    private List<PhoneNumber> phoneNumbers = null;
 
-    @DoNotSerialize
     @Relation(parentColumn = "contactId", entityColumn = "contactId")
-    private List<Message> messages;
+    private List<Message> messages = null;
 
     public static ContactWithData newInstance(String contactName) {
         ContactWithData contactWithData = new ContactWithData();
@@ -58,5 +59,40 @@ public class ContactWithData extends JSONSerializable {
         phoneNumberObj.setPhoneNumberId(UUID.randomUUID().toString());
 
         phoneNumbers.add(phoneNumberObj);
+    }
+
+    @Override
+    public @Nullable JSONObject toJson() {
+        JSONObject baseObj = super.toJson();
+        if (baseObj == null) return null;
+
+        JSONArray jsonArray = new JSONArray();
+
+        if (phoneNumbers != null) {
+            for (PhoneNumber phoneNumber : phoneNumbers) {
+                jsonArray.put(phoneNumber.toJson());
+            }
+
+            try {
+                baseObj.put("phoneNumbers", jsonArray);
+            } catch (JSONException ignored) {
+
+            }
+        }
+
+        if (messages != null) {
+            jsonArray = new JSONArray();
+            for (Message message : messages) {
+                jsonArray.put(message.toJson());
+            }
+
+            try {
+                baseObj.put("messages", jsonArray);
+            } catch (JSONException ignored) {
+
+            }
+        }
+
+        return baseObj;
     }
 }

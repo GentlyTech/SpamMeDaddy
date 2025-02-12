@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 
 /**
  * Allows a class to be serialized into a JSONObject.
@@ -19,7 +20,7 @@ public abstract class JSONSerializable {
     /**
      * <p>Reflectively maps all fields (public, private, and protected) in this instance to a {@link JSONObject} and returns it to allow for easy data transfer between mediums.</p>
      *
-     * <p>Fields annotated with {@link DoNotSerialize} will be excluded from the {@link JSONObject}.</p>
+     * <p>Fields annotated with {@link DoNotSerialize} will be excluded from the {@link JSONObject}. Additionally, collections and arrays are skipped in this implementation and need to be explicitly processed by overriding this method.</p>
      *
      * @return a {@link JSONObject} representing this instance
      */
@@ -40,11 +41,13 @@ public abstract class JSONSerializable {
                 Object value = field.get(this);
 
                 Class<?> type = field.getType();
+
+                if (type.isArray() || value instanceof Collection) continue;
+
                 if (value != null && type.getSuperclass() == JSONSerializable.class) {
                     try {
                         value = type.getSuperclass().getDeclaredMethod("toJson").invoke(value);
-                    }
-                    catch (NoSuchMethodException | InvocationTargetException ex) {
+                    } catch (NoSuchMethodException | InvocationTargetException ex) {
                         Log.w(getClass().getName(), String.format("Field %s (of type %s) does not implement toJson() or invocation failed. Setting to null... (%s)", key, type.getName(), ex));
                         value = null;
                     }
