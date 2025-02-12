@@ -1,4 +1,4 @@
-package com.yepdevelopment.spammedaddy.Utils.Data;
+package com.yepdevelopment.spammedaddy.Helpers.Data;
 
 import java.util.HashSet;
 import java.util.Set;

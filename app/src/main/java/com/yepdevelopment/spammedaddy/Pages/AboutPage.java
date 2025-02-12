@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContributorAdapter;
 import com.yepdevelopment.spammedaddy.Types.Page;
-import com.yepdevelopment.spammedaddy.Utils.Android.ResourceManipulator;
+import com.yepdevelopment.spammedaddy.Helpers.Android.ResourceManipulator;
 import com.yepdevelopment.spammedaddy.databinding.PageAboutBinding;
 
 public class AboutPage extends Page<PageAboutBinding> {

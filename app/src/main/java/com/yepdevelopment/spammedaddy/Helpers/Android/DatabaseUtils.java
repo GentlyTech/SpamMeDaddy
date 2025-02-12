@@ -1,4 +1,4 @@
-package com.yepdevelopment.spammedaddy.Utils.Android;
+package com.yepdevelopment.spammedaddy.Helpers.Android;
 
 import android.content.Context;
 

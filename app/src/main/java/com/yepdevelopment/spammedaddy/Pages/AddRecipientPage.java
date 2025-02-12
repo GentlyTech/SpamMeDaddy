@@ -1,6 +1,6 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
-import static com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils.getContacts;
+import static com.yepdevelopment.spammedaddy.Helpers.Data.ContactUtils.getContacts;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -13,18 +13,15 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.gson.JsonObject;
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
-import com.yepdevelopment.spammedaddy.Utils.Android.TextChangedListeners.OnTextChangedListener;
-import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
+import com.yepdevelopment.spammedaddy.Helpers.Android.TextChangedListeners.OnTextChangedListener;
+import com.yepdevelopment.spammedaddy.Helpers.Data.ContactUtils;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
-
-import org.json.JSONObject;
 
 public class AddRecipientPage extends Page<PageAddRecipientBinding> {
     AddRecipientPageViewModel addRecipientPageViewModel;
