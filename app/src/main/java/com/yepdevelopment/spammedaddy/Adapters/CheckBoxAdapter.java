@@ -1,32 +1,35 @@
 package com.yepdevelopment.spammedaddy.Adapters;
 
 import android.content.Context;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
 import com.yepdevelopment.spammedaddy.databinding.ComponentCheckboxEntryBinding;
 
-public class CheckBoxAdapter extends GenericAdapter<ComponentCheckboxEntryBinding> {
-    public CheckBoxAdapter(Context context) {
-        super(context, ComponentCheckboxEntryBinding.class);
-    }
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
-    @NonNull
-    @Override
-    public GenericViewHolder<ComponentCheckboxEntryBinding> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+public class CheckBoxAdapter extends GenericAdapter<ComponentCheckboxEntryBinding> {
+    List<String> labels;
+
+    public CheckBoxAdapter(Context context, List<String> labels) {
+        super(context, ComponentCheckboxEntryBinding.class);
+        this.labels = labels != null ? labels : new LinkedList<>();
     }
 
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentCheckboxEntryBinding> holder, int position) {
+        ComponentCheckboxEntryBinding binding = holder.getBinding();
 
+        String label = labels.get(position);
+
+        binding.checkBox.setText(label);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return labels.size();
     }
 }

@@ -5,12 +5,18 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.yepdevelopment.spammedaddy.Adapters.CheckBoxAdapter;
+import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageNumberSelectionBinding;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import lombok.Getter;
 
@@ -40,7 +46,18 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        List<String> phoneNumbers = new LinkedList<>();
 
+        for (PhoneNumber phoneNumber : contact.getPhoneNumbers()) {
+            phoneNumbers.add(phoneNumber.getPhoneNumber());
+        }
+
+        binding.phoneNumberSelectionList.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.phoneNumberSelectionList.setAdapter(new CheckBoxAdapter(requireContext(), phoneNumbers));
+
+        binding.finishPhoneNumberSelectionButton.setOnClickListener((ignored) -> {
+
+        });
     }
 
     private void navigateToErrorPage() {
