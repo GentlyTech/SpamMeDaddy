@@ -12,6 +12,7 @@ navigationSafeArgsGradlePlugin = "2.8.6"
 navigationUi = "2.8.6"
 room = "2.6.1"
 lombok = "1.18.36"
+gson = "2.12.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,6 +27,7 @@ navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room"}
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

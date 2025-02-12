@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.room.runtime)
+    implementation(libs.gson)
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
     testImplementation(libs.junit)
