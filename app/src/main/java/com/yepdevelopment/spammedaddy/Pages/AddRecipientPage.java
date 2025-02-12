@@ -1,6 +1,6 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
-import static com.yepdevelopment.spammedaddy.Helpers.Data.ContactUtils.getContacts;
+import static com.yepdevelopment.spammedaddy.Helpers.General.ContactUtils.getContacts;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import com.yepdevelopment.spammedaddy.Gson.Serializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Helpers.Android.TextChangedListeners.OnTextChangedListener;
-import com.yepdevelopment.spammedaddy.Helpers.Data.ContactUtils;
+import com.yepdevelopment.spammedaddy.Helpers.General.ContactUtils;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 
