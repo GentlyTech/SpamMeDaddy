@@ -28,7 +28,7 @@ public abstract class GenericAdapter<T extends ViewBinding> extends RecyclerView
     public GenericViewHolder<T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         try {
-            T binding = (T) viewBindingClass.getDeclaredMethod("inflate", LayoutInflater.class, ViewGroup.class, boolean.class).invoke(inflater, parent, false);
+            T binding = (T) viewBindingClass.getDeclaredMethod("inflate", LayoutInflater.class, ViewGroup.class, boolean.class).invoke(null, inflater, parent, false);
             if (binding == null) throw new IllegalArgumentException();
             return new GenericViewHolder<>(binding);
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
