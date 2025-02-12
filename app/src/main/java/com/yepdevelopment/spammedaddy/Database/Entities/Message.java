@@ -1,5 +1,6 @@
 package com.yepdevelopment.spammedaddy.Database.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,13 +15,14 @@ import lombok.Setter;
 @Entity
 public class Message {
     @PrimaryKey
-    private String messageId = null;
+    @NonNull
+    private String messageId = "";
 
-    private String contactId = null;
+    private String contactId = "";
 
     private LocalDateTime messageScheduledSendTime = null;
 
-    private String messageContent = null;
+    private String messageContent = "";
 
     public static Message generateSample() {
         Message inst = new Message();

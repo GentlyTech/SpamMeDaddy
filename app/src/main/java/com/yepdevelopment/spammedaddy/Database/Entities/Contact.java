@@ -1,5 +1,6 @@
 package com.yepdevelopment.spammedaddy.Database.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,9 +14,10 @@ import lombok.Setter;
 @Entity
 public class Contact implements Comparable<Contact> {
     @PrimaryKey
-    private String contactId = null;
+    @NonNull
+    private String contactId = "";
 
-    private String contactName = null;
+    private String contactName = "";
 
     public static Contact generateSample() {
         Contact inst = new Contact();

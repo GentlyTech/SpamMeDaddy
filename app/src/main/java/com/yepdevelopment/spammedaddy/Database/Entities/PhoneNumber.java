@@ -1,5 +1,6 @@
 package com.yepdevelopment.spammedaddy.Database.Entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,11 +14,12 @@ import lombok.Setter;
 @Entity
 public class PhoneNumber {
     @PrimaryKey
-    private String phoneNumberId = null;
+    @NonNull
+    private String phoneNumberId = "";
 
-    private String contactId = null;
+    private String contactId = "";
 
-    private String phoneNumber = null;
+    private String phoneNumber = "";
 
     public static PhoneNumber generateSample() {
         PhoneNumber inst = new PhoneNumber();
