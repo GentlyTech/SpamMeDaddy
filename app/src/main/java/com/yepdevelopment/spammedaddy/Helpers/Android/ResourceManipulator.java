@@ -39,7 +39,6 @@ public class ResourceManipulator {
                 Contributor contributor = new Contributor(contributorStringArray[0], contributorStringArray[1], contributorStringArray[2]); // [0] is the name, [1] is the role, [2] is the imageUri
                 contributorsList.add(contributor);
             }
-            arrayOfStringIds.recycle();
         }
 
         return contributorsList;
