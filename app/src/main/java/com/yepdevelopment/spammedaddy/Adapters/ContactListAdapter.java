@@ -18,23 +18,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ContactListAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentContactCardBinding>> {
-    Context context;
-    List<ContactWithData> contacts;
-    Consumer<ContactWithData> onClickHandler;
+public class ContactListAdapter extends GenericAdapter<ComponentContactCardBinding> {
+    private final List<ContactWithData> contacts;
+    private final Consumer<ContactWithData> onClickHandler;
 
     public ContactListAdapter(Context context, List<ContactWithData> contacts, Consumer<ContactWithData> onClickHandler) {
-        this.context = context;
+        super(context, ComponentContactCardBinding.class);
         this.contacts = contacts != null ? contacts : new LinkedList<>();
         this.onClickHandler = onClickHandler;
-    }
-
-    @NonNull
-    @Override
-    public GenericViewHolder<ComponentContactCardBinding> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        ComponentContactCardBinding binding = ComponentContactCardBinding.inflate(inflater, parent, false);
-        return new GenericViewHolder<>(binding);
     }
 
     @Override

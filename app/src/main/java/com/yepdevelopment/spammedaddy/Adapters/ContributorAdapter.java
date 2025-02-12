@@ -15,25 +15,16 @@ import com.yepdevelopment.spammedaddy.databinding.ComponentContributorBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContributorAdapter extends RecyclerView.Adapter<GenericViewHolder<ComponentContributorBinding>> {
-    Context context;
-    List<Contributor> contributors;
+public class ContributorAdapter extends GenericAdapter<ComponentContributorBinding> {
+    private final List<Contributor> contributors;
 
     public ContributorAdapter(@NonNull Context context, List<Contributor> contributors) {
-        this.context = context;
+        super(context, ComponentContributorBinding.class);
         if (contributors == null) {
             this.contributors = new ArrayList<>(0);
         } else {
             this.contributors = contributors;
         }
-    }
-
-    @NonNull
-    @Override
-    public GenericViewHolder<ComponentContributorBinding> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        ComponentContributorBinding binding = ComponentContributorBinding.inflate(layoutInflater, parent, false);
-        return new GenericViewHolder<>(binding);
     }
 
     @Override
