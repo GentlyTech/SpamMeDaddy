@@ -21,7 +21,7 @@ import java.util.List;
 import lombok.Getter;
 
 public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
-    ContactWithData contact;
+    ContactWithData contactWithData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,14 +41,14 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
             return;
         }
 
-        this.contact = contact;
+        this.contactWithData = contact;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         List<String> phoneNumbers = new LinkedList<>();
 
-        for (PhoneNumber phoneNumber : contact.getPhoneNumbers()) {
+        for (PhoneNumber phoneNumber : contactWithData.getPhoneNumbers()) {
             phoneNumbers.add(phoneNumber.getPhoneNumber());
         }
 
