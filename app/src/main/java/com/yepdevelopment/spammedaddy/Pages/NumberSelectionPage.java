@@ -1,6 +1,10 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
@@ -32,6 +36,11 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         }
 
         this.contact = contact;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
     }
 
     private void navigateToErrorPage() {
