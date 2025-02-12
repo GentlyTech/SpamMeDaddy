@@ -22,6 +22,8 @@ import com.yepdevelopment.spammedaddy.Utils.Data.ContactUtils;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 
+import org.json.JSONObject;
+
 public class AddRecipientPage extends Page<PageAddRecipientBinding> {
     AddRecipientPageViewModel addRecipientPageViewModel;
 
@@ -79,7 +81,12 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
 
     private void onContactCardClicked(ContactWithData contact) {
         Bundle args = new Bundle();
-        args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), contact.toJson().toString());
+        JSONObject serializedContact = contact.toJson();
+
+        if (serializedContact != null) {
+            args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), serializedContact.toString());
+        }
+
         navController.navigate(R.id.numberSelectionPage, args);
     }
 

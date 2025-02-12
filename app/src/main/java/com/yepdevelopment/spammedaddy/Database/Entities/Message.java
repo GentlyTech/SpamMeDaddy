@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.time.LocalDateTime;
@@ -15,30 +17,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Message implements JSONSerializable {
+public class Message extends JSONSerializable {
     @PrimaryKey
-    private String messageId;
+    private String messageId = null;
 
-    private String contactId;
+    private String contactId = null;
 
-    private LocalDateTime messageScheduledSendTime;
+    private LocalDateTime messageScheduledSendTime = null;
 
-    private String messageContent;
-
-    public static Message fromJson(JSONObject jsonObject) {
-        return null; // TODO implement method
-    }
-
-    public static Message fromJson(String jsonString) {
-        return null; // TODO implement method
-    }
-
-    @Override
-    public JSONObject toJson() {
-        JSONObject jsonObject = new JSONObject();
-
-        // TODO implement method
-
-        return jsonObject;
-    }
+    private String messageContent = null;
 }

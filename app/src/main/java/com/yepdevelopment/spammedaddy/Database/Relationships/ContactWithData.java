@@ -17,7 +17,7 @@ import java.util.UUID;
 import lombok.Getter;
 
 @Getter
-public class ContactWithData implements JSONSerializable {
+public class ContactWithData extends JSONSerializable {
     @Embedded
     private Contact contact;
 
@@ -47,21 +47,5 @@ public class ContactWithData implements JSONSerializable {
         contactWithData.messages = new LinkedList<>();
 
         return contactWithData;
-    }
-
-    public JSONObject toJson() {
-        JSONObject jsonObject = new JSONObject();
-
-        // TODO implement method
-
-        return jsonObject;
-    }
-
-    public static ContactWithData fromJson(JSONObject jsonObject) {
-        return null; // TODO implement method
-    }
-
-    public static ContactWithData fromJson(String jsonString) {
-        return null; // TODO implement method
     }
 }
