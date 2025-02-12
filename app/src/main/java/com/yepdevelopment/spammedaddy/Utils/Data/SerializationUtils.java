@@ -5,6 +5,7 @@ import android.util.Log;
 import com.yepdevelopment.spammedaddy.Annotations.DoNotSerialize;
 
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,6 +13,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
 
 public class SerializationUtils {
 
@@ -60,18 +64,52 @@ public class SerializationUtils {
 
                     try {
                         Object value = jsonObject.get(key);
+                        Class<?> fieldType = field.getType();
 
                         if (value instanceof JSONObject) {
-                            value = fromJson((JSONObject) value, field.getType());
+                            value = fromJson((JSONObject) value, fieldType);
+                        }
+
+                        if (value instanceof JSONArray) {
+                            JSONArray jsonArray = (JSONArray) value;
+
+                            ParameterizedType superClass = (ParameterizedType) (fieldType.getGenericSuperclass());
+
+                            if (superClass == null) {
+                                Log.e(SerializationUtils.class.getName(), String.format("Unable to map JSONArray to field %s because field is missing type parameter (checkpoint 1)", key));
+                                continue;
+                            }
+
+                            Type[] genericTypes = superClass.getActualTypeArguments();
+                            if (genericTypes.length == 0) {
+                                Log.e(SerializationUtils.class.getName(), String.format("Unable to map JSONArray to field %s because field is missing type parameter (checkpoint 2)", key));
+                                continue;
+                            }
+
+                            Class<?> bindingType = (Class<?>) genericTypes[0];
+
+                            LinkedList<Object> deserializedValues = new LinkedList<>();
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                Object deserializedValue = fromJson((JSONObject) jsonArray.get(i), bindingType);
+                                if (deserializedValue == null) continue;
+                                deserializedValues.add(deserializedValue);
+                            }
+
+                            if (fieldType.isArray()) {
+                                value = deserializedValues.toArray();
+                            } else {
+                                value = deserializedValues;
+                            }
+
                         }
 
                         if (value == null) continue;
 
-                        if (value.getClass().isPrimitive() || field.getType().isInstance(value)) {
+                        if (value.getClass().isPrimitive() || fieldType.isInstance(value)) {
                             field.set(inst, value);
-                        }
-                        else {
-                            Log.w(SerializationUtils.class.getName(), String.format("The JSON value of %s does not match the corresponding field type %s, skipping...", key, field.getType().getName()));
+                        } else {
+                            Log.w(SerializationUtils.class.getName(), String.format("The JSON value of %s does not match the corresponding field type %s, skipping...", key, fieldType.getName()));
                         }
                     } catch (JSONException ex) {
                         Log.w(SerializationUtils.class.getName(), String.format("Encountered JSON error while parsing '%s', skipping...", key));
