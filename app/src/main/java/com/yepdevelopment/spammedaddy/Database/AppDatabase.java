@@ -15,9 +15,9 @@ import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 @Database(entities = {Contact.class, Message.class, PhoneNumber.class}, version = 1)
 @TypeConverters({CustomTypeConverters.class})
 public abstract class AppDatabase extends RoomDatabase {
-    public ContactDao contactDAO;
+    public abstract ContactDao contactDAO();
 
-    public MessageDao messageDao;
+    public abstract MessageDao messageDao();
 
-    public PhoneNumberDao phoneNumberDao;
+    public abstract PhoneNumberDao phoneNumberDao();
 }
