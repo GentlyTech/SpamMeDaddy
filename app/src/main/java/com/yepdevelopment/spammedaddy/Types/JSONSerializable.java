@@ -16,11 +16,11 @@ import java.lang.reflect.Field;
  */
 public abstract class JSONSerializable {
     /**
-     * <p>Reflectively maps all fields (public, private, and protected) in this instance to a JSONObject and returns it to allow for easy data transfer between mediums.</p>
+     * <p>Reflectively maps all fields (public, private, and protected) in this instance to a {@link JSONObject} and returns it to allow for easy data transfer between mediums.</p>
      *
-     * <p>Fields annotated with {@link DoNotSerialize} will be excluded from the JSONObject.</p>
+     * <p>Fields annotated with {@link DoNotSerialize} will be excluded from the {@link JSONObject}.</p>
      *
-     * @return a JSONObject representing this instance
+     * @return a {@link JSONObject} representing this instance
      */
     @Nullable
     public JSONObject toJson() {
