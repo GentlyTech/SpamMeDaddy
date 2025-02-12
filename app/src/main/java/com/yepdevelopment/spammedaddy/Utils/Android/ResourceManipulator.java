@@ -31,15 +31,16 @@ public class ResourceManipulator {
         LinkedList<Contributor> contributorsList = new LinkedList<>();
 
         Resources resources = context.getResources();
-        TypedArray arrayOfStringIds = resources.obtainTypedArray(R.array.contributors);
-        for (int i = 0; i < arrayOfStringIds.length(); i++) {
-            int id = arrayOfStringIds.getResourceId(i, 0);
-            if (id < 1) continue; // Invalid resource
-            String[] contributorStringArray = resources.getStringArray(id);
-            Contributor contributor = new Contributor(contributorStringArray[0], contributorStringArray[1], contributorStringArray[2]); // [0] is the name, [1] is the role, [2] is the imageUri
-            contributorsList.add(contributor);
+        try (TypedArray arrayOfStringIds = resources.obtainTypedArray(R.array.contributors)) {
+            for (int i = 0; i < arrayOfStringIds.length(); i++) {
+                int id = arrayOfStringIds.getResourceId(i, 0);
+                if (id < 1) continue; // Invalid resource
+                String[] contributorStringArray = resources.getStringArray(id);
+                Contributor contributor = new Contributor(contributorStringArray[0], contributorStringArray[1], contributorStringArray[2]); // [0] is the name, [1] is the role, [2] is the imageUri
+                contributorsList.add(contributor);
+            }
+            arrayOfStringIds.recycle();
         }
-        arrayOfStringIds.recycle();
 
         return contributorsList;
     }
