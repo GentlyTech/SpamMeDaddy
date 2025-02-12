@@ -14,22 +14,22 @@ import java.util.List;
 @Dao
 public abstract class MessageDao {
     @Insert
-    abstract void insertAll(Message... messages);
+    public abstract void insertAll(Message... messages);
 
     @Delete
-    abstract void delete(Message message);
+    public abstract void delete(Message message);
 
     @Query("SELECT * FROM message")
-    abstract List<Message> getAll();
+    public abstract List<Message> getAll();
 
     @Query("SELECT * FROM message WHERE contactId = :contactId")
-    abstract List<Message> getMessagesByContactId(String contactId);
+    public abstract List<Message> getMessagesByContactId(String contactId);
 
-    List<Message> getMessagesForContact(Contact contact) {
+    public List<Message> getMessagesForContact(Contact contact) {
         return getMessagesByContactId(contact.getContactId());
     }
 
-    List<Message> getMessagesForContact(ContactWithData contact) {
+    public List<Message> getMessagesForContact(ContactWithData contact) {
         return getMessagesByContactId(contact.getContact().getContactId());
     }
 }

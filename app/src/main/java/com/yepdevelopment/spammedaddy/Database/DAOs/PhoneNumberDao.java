@@ -13,19 +13,19 @@ import java.util.List;
 @Dao
 public abstract class PhoneNumberDao {
     @Insert
-    abstract void insertAll(PhoneNumber... phoneNumbers);
+    public abstract void insertAll(PhoneNumber... phoneNumbers);
 
     @Delete
-    abstract void delete(PhoneNumber contact);
+    public abstract void delete(PhoneNumber contact);
 
     @Query("SELECT * FROM phonenumber")
-    abstract List<PhoneNumber> getAll();
+    public abstract List<PhoneNumber> getAll();
 
     @Query("SELECT * FROM phonenumber WHERE contactId = :contactId")
-    abstract List<PhoneNumber> getPhoneNumbersByContactId(String contactId);
+    public abstract List<PhoneNumber> getPhoneNumbersByContactId(String contactId);
 
 
-    List<PhoneNumber> getPhoneNumbersForContact(Contact contact) {
+    public List<PhoneNumber> getPhoneNumbersForContact(Contact contact) {
         return getPhoneNumbersByContactId(contact.getContactId());
     }
 }
