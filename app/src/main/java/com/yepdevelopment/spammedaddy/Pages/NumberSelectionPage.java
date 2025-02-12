@@ -56,7 +56,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         binding.phoneNumberSelectionList.setAdapter(new CheckBoxAdapter(requireContext(), phoneNumbers));
 
         binding.finishPhoneNumberSelectionButton.setOnClickListener((ignored) -> {
-
+            database.insertContactWithData(contactWithData);
         });
     }
 
