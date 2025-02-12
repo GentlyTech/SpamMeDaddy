@@ -6,23 +6,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
+import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Utils.Data.SerializationUtils;
 
 @RunWith(AndroidJUnit4.class)
 public class SerializationTests {
-    private static final Contact CONTACT_1 = new Contact() {
-
-        String contactId = "0";
-        String contactName = "Big Smoke";
-    };
-
     @Test
     public void sampleContactToJsonTest1() {
-        System.out.println(CONTACT_1.toJson());
+        System.out.println(Contact.generateSample().toJson());
     }
 
     @Test
     public void sampleJsonToContactTest1() {
-        System.out.println(SerializationUtils.fromJson(CONTACT_1.toJson(), Contact.class).toJson());
+        System.out.println(SerializationUtils.fromJson(Contact.generateSample().toJson(), Contact.class).toJson());
+    }
+
+    @Test
+    public void sampleContactWithDataToJsonTest1() {
+        System.out.println(ContactWithData.generateSample().toJson());
     }
 }

@@ -5,11 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +23,13 @@ public class Message extends JSONSerializable {
     private LocalDateTime messageScheduledSendTime = null;
 
     private String messageContent = null;
+
+    public static Message generateSample() {
+        Message inst = new Message();
+        inst.messageId = UUID.randomUUID().toString();
+        inst.contactId = UUID.randomUUID().toString();
+        inst.messageScheduledSendTime = LocalDateTime.now();
+        inst.messageContent = UUID.randomUUID().toString();
+        return inst;
+    }
 }

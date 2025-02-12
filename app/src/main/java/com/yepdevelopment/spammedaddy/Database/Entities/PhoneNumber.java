@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey;
 
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +15,17 @@ import lombok.Setter;
 @Entity
 public class PhoneNumber extends JSONSerializable {
     @PrimaryKey
-    private String phoneNumberId;
+    private String phoneNumberId = null;
 
-    private String contactId;
+    private String contactId = null;
 
-    private String phoneNumber;
+    private String phoneNumber = null;
+
+    public static PhoneNumber generateSample() {
+        PhoneNumber inst = new PhoneNumber();
+        inst.phoneNumberId = UUID.randomUUID().toString();
+        inst.contactId = UUID.randomUUID().toString();
+        inst.phoneNumber = UUID.randomUUID().toString();
+        return inst;
+    }
 }

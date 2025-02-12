@@ -5,9 +5,7 @@ import androidx.room.PrimaryKey;
 
 import com.yepdevelopment.spammedaddy.Types.JSONSerializable;
 
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +18,13 @@ public class Contact extends JSONSerializable implements Comparable<Contact> {
     private String contactId = null;
 
     private String contactName = null;
+
+    public static Contact generateSample() {
+        Contact inst = new Contact();
+        inst.contactId = UUID.randomUUID().toString();
+        inst.contactName = UUID.randomUUID().toString();
+        return inst;
+    }
 
     @Override
     public int compareTo(Contact other) {
