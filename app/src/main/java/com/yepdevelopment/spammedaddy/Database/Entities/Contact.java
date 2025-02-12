@@ -17,16 +17,43 @@ import lombok.Setter;
 @Entity
 public class Contact implements Comparable<Contact>, JSONSerializable {
     @PrimaryKey
-    private String contactId;
+    private String contactId = null;
 
-    private String contactName;
+    private String contactName = null;
 
+    @Nullable
     public static Contact fromJson(JSONObject jsonObject) {
-        return null; // TODO implement method
+        if (jsonObject == null) return null;
+
+        try {
+            Contact inst = new Contact();
+
+            if (jsonObject.has("contactId")) {
+                inst.contactId = jsonObject.getString("contactId");
+            }
+
+            if (jsonObject.has("contactName")) {
+                inst.contactName = jsonObject.getString("contactName");
+            }
+
+            return inst;
+        }
+        catch (JSONException ignored) {
+
+        }
+
+        return null;
     }
 
+    @Nullable
     public static Contact fromJson(String jsonString) {
-        return null; // TODO implement method
+        try {
+            return fromJson(new JSONObject(jsonString));
+        }
+        catch (JSONException ignored) {
+
+        }
+        return null;
     }
 
     @Override
@@ -35,16 +62,19 @@ public class Contact implements Comparable<Contact>, JSONSerializable {
     }
 
     @Override
+    @Nullable
     public JSONObject toJson() {
-        JSONObject jsonObject = new JSONObject();
-
         try {
+            JSONObject jsonObject = new JSONObject();
+
             jsonObject.put("contactId", contactId);
             jsonObject.put("contactName", contactName);
+
+            return jsonObject;
         } catch (JSONException ignored) {
 
         }
 
-        return jsonObject;
+        return null;
     }
 }
