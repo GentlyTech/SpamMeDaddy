@@ -12,6 +12,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.viewbinding.ViewBinding;
 
+import com.yepdevelopment.spammedaddy.Database.AppDatabase;
+import com.yepdevelopment.spammedaddy.Helpers.Android.DatabaseUtils;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -19,12 +22,16 @@ import java.lang.reflect.Type;
 
 public abstract class Page<T extends ViewBinding> extends Fragment {
     protected NavController navController;
+
+    protected AppDatabase database;
+
     protected T binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        database = DatabaseUtils.getAppDatabase(requireContext());
     }
 
     @Override
