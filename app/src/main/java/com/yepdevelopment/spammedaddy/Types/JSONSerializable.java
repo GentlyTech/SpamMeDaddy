@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Allows a class to be serialized into a JSONObject.
@@ -37,6 +38,17 @@ public abstract class JSONSerializable {
 
                 String key = field.getName();
                 Object value = field.get(this);
+
+                Class<?> type = field.getType();
+                if (value != null && type.getSuperclass() == JSONSerializable.class) {
+                    try {
+                        value = type.getSuperclass().getDeclaredMethod("toJson").invoke(value);
+                    }
+                    catch (NoSuchMethodException | InvocationTargetException ex) {
+                        Log.w(getClass().getName(), String.format("Field %s (of type %s) does not implement toJson() or invocation failed. Setting to null... (%s)", key, type.getName(), ex));
+                        value = null;
+                    }
+                }
 
                 result.put(key, value);
             }

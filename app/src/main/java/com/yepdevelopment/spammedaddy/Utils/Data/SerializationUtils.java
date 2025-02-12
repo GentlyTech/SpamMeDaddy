@@ -59,7 +59,20 @@ public class SerializationUtils {
                     if (!jsonObject.has(key)) continue;
 
                     try {
-                        field.set(inst, jsonObject.get(key));
+                        Object value = jsonObject.get(key);
+
+                        if (value instanceof JSONObject) {
+                            value = fromJson((JSONObject) value, field.getType());
+                        }
+
+                        if (value == null) continue;
+
+                        if (value.getClass().isPrimitive() || field.getType().isInstance(value)) {
+                            field.set(inst, value);
+                        }
+                        else {
+                            Log.w(SerializationUtils.class.getName(), String.format("The JSON value of %s does not match the corresponding field type %s, skipping...", key, field.getType().getName()));
+                        }
                     } catch (JSONException ex) {
                         Log.w(SerializationUtils.class.getName(), String.format("Encountered JSON error while parsing '%s', skipping...", key));
                     }

@@ -20,7 +20,6 @@ import lombok.Getter;
 public class ContactWithData extends JSONSerializable {
     // TODO figure out how to serialize these fields
     @Embedded
-    @DoNotSerialize
     private Contact contact;
 
     @DoNotSerialize
