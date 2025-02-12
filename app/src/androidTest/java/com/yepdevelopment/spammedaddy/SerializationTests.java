@@ -5,7 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.google.gson.Gson;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
-import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
+import com.yepdevelopment.spammedaddy.Gson.Serializer;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class SerializationTests {
-    Gson serializer = CustomSerializer.getCustomSerializer();
+    Gson serializer = Serializer.getSerializer();
 
     @Test
     public void sampleContactToJsonTest1() {

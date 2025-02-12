@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yepdevelopment.spammedaddy.Adapters.CheckBoxAdapter;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
-import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
+import com.yepdevelopment.spammedaddy.Gson.Serializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageNumberSelectionBinding;
@@ -35,7 +35,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         }
 
         String rawContactWithData = args.getString(ARGS.CONTACT.getValue());
-        ContactWithData contact = CustomSerializer.getCustomSerializer().fromJson(rawContactWithData, ContactWithData.class);
+        ContactWithData contact = Serializer.getSerializer().fromJson(rawContactWithData, ContactWithData.class);
         if (contact == null) {
             navigateToErrorPage();
             return;

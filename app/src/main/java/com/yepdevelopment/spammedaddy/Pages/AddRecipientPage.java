@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
-import com.yepdevelopment.spammedaddy.Gson.CustomSerializer;
+import com.yepdevelopment.spammedaddy.Gson.Serializer;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Helpers.Android.TextChangedListeners.OnTextChangedListener;
@@ -80,7 +80,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
 
     private void onContactCardClicked(ContactWithData contact) {
         Bundle args = new Bundle();
-        String serializedContact = CustomSerializer.getCustomSerializer().toJson(contact);
+        String serializedContact = Serializer.getSerializer().toJson(contact);
 
         args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), serializedContact);
 
