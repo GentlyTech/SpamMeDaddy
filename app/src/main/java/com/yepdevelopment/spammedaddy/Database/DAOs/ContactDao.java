@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 
@@ -14,16 +15,19 @@ import java.util.List;
 @Dao
 public interface ContactDao {
     @Insert
-    void insertAll(Contact... contacts);
+    ListenableFuture<Void> insertContacts(Contact... contacts);
+
+    @Insert
+    ListenableFuture<Void> insertContacts(List<Contact> contacts);
 
     @Delete
-    void delete(Contact contact);
+    ListenableFuture<Void> deleteContact(Contact contact);
 
     @Query("SELECT * FROM contact")
-    List<Contact> getAll();
+    ListenableFuture<List<Contact>> getAllContacts();
 
     @Transaction
     @Query("SELECT * FROM contact")
-    List<ContactWithData> getAllWithData();
+    ListenableFuture<List<ContactWithData>> getContactsWithData();
 
 }

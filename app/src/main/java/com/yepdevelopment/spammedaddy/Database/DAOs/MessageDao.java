@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Entities.Message;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
@@ -14,25 +15,25 @@ import java.util.List;
 @Dao
 public abstract class MessageDao {
     @Insert
-    public abstract void insertAll(Message... messages);
+    public abstract ListenableFuture<Void> insertMessages(Message... messages);
 
     @Insert
-    public abstract void insertAll(List<Message> messages);
+    public abstract ListenableFuture<Void> insertMessages(List<Message> messages);
 
     @Delete
-    public abstract void delete(Message message);
+    public abstract ListenableFuture<Void> deleteMessage(Message message);
 
     @Query("SELECT * FROM message")
-    public abstract List<Message> getAll();
+    public abstract ListenableFuture<List<Message>> getAllMessages();
 
     @Query("SELECT * FROM message WHERE contactId = :contactId")
-    public abstract List<Message> getMessagesByContactId(String contactId);
+    public abstract ListenableFuture<List<Message>> getMessagesByContactId(String contactId);
 
-    public List<Message> getMessagesForContact(Contact contact) {
+    public ListenableFuture<List<Message>> getMessagesForContact(Contact contact) {
         return getMessagesByContactId(contact.getContactId());
     }
 
-    public List<Message> getMessagesForContact(ContactWithData contact) {
+    public ListenableFuture<List<Message>> getMessagesForContact(ContactWithData contact) {
         return getMessagesByContactId(contact.getContact().getContactId());
     }
 }

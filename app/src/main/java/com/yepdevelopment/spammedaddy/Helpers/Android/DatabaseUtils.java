@@ -28,8 +28,8 @@ public class DatabaseUtils {
 
         AppDatabase database = getAppDatabase(context);
 
-        database.contactDao().insertAll(data.getContact());
-        database.phoneNumberDao().insertAll(data.getPhoneNumbers());
-        database.messageDao().insertAll(data.getMessages());
+        database.contactDao().insertContacts(data.getContact());
+        database.phoneNumberDao().insertPhoneNumbers(data.getPhoneNumbers());
+        database.messageDao().insertMessages(data.getMessages());
     }
 }
