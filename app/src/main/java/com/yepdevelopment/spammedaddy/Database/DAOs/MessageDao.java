@@ -16,6 +16,9 @@ public abstract class MessageDao {
     @Insert
     public abstract void insertAll(Message... messages);
 
+    @Insert
+    public abstract void insertAll(List<Message> messages);
+
     @Delete
     public abstract void delete(Message message);
 

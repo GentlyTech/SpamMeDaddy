@@ -15,6 +15,9 @@ public abstract class PhoneNumberDao {
     @Insert
     public abstract void insertAll(PhoneNumber... phoneNumbers);
 
+    @Insert
+    public abstract void insertAll(List<PhoneNumber> phoneNumbers);
+
     @Delete
     public abstract void delete(PhoneNumber contact);
 
