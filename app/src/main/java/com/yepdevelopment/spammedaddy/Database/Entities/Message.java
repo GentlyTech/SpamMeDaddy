@@ -2,6 +2,7 @@ package com.yepdevelopment.spammedaddy.Database.Entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+@Entity(foreignKeys = {
+        @ForeignKey(entity = Contact.class, parentColumns = "contactId", childColumns = "contactId", onDelete = ForeignKey.CASCADE)
+})
 public class Message {
     @PrimaryKey
     @NonNull
