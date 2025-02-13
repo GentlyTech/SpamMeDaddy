@@ -1,16 +1,25 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.yepdevelopment.spammedaddy.Adapters.ContactAdapter;
+import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.MenuProviders.GeneralMenuProvider;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageHomeBinding;
+
+import java.util.List;
+import java.util.concurrent.Executors;
 
 public class HomePage extends Page<PageHomeBinding> {
     @Override
@@ -28,11 +37,26 @@ public class HomePage extends Page<PageHomeBinding> {
             return false;
         })), getViewLifecycleOwner());
 
-        hideRecipientsList(); // TODO remove and implement checking recipients list length and displaying accordingly
+        binding.homeRecipientsList.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        database.contactDao().getAllContactsObservable().observe(getViewLifecycleOwner(), (contacts) -> {
+            if (contacts.isEmpty()) {
+                hideRecipientsList();
+                return;
+            }
+
+            binding.homeRecipientsList.setAdapter(new ContactAdapter(requireContext(), contacts, HomePage.this::onContactClicked));
+
+            showRecipientsList();
+        });
 
         binding.addRecipientFloatingActionButton.setOnClickListener((v) -> {
             navController.navigate(HomePageDirections.actionHomeFragmentToAddRecipientPage());
         });
+    }
+
+    private void onContactClicked(Contact contact) {
+        Snackbar.make(binding.getRoot(), String.format("Contact Clicked: %s", contact.getContactName()), Snackbar.LENGTH_SHORT).show();
     }
 
     public void showRecipientsList() {
