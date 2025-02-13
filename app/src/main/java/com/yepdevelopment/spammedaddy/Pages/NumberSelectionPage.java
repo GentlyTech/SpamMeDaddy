@@ -91,7 +91,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         Bundle errorPageArgs = new Bundle();
         errorPageArgs.putString(ErrorPage.ARGS.HEADING.getValue(), getString(R.string.numberSelectionPage_ErrorPageHeading_NoContact));
         errorPageArgs.putString(ErrorPage.ARGS.BODY.getValue(), getString(R.string.numberSelectionPage_ErrorPageBody_NoContact));
-        navController.navigate(R.id.action_numberSelectionPage_to_errorPage, errorPageArgs);
+        navController.navigate(NumberSelectionPageDirections.actionNumberSelectionPageToErrorPage().getActionId(), errorPageArgs);
     }
 
     @Getter

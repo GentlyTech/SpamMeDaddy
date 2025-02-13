@@ -84,7 +84,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
 
         args.putString(NumberSelectionPage.ARGS.CONTACT.getValue(), serializedContact);
 
-        navController.navigate(R.id.numberSelectionPage, args);
+        navController.navigate(AddRecipientPageDirections.actionAddRecipientPageToNumberSelectionPage().getActionId(), args);
     }
 
     private void requestContactsPermission() {
