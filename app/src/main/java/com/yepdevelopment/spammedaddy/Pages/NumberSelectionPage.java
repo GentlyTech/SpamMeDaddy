@@ -16,18 +16,23 @@ import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageNumberSelectionBinding;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import lombok.Getter;
 
 public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
-    ContactWithData contactWithData;
+    private ContactWithData contactWithData;
+
+    private Map<String, Boolean> phoneNumbers;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Bundle args = getArguments();
 
         if (args == null) {
@@ -43,22 +48,43 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         }
 
         this.contactWithData = contact;
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        List<String> phoneNumbers = new LinkedList<>();
+        phoneNumbers = new HashMap<>();
 
         for (PhoneNumber phoneNumber : contactWithData.getPhoneNumbers()) {
-            phoneNumbers.add(phoneNumber.getPhoneNumber());
+            phoneNumbers.put(phoneNumber.getPhoneNumberId(), false);
         }
 
         binding.phoneNumberSelectionList.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.phoneNumberSelectionList.setAdapter(new CheckBoxAdapter(requireContext(), phoneNumbers));
+        binding.phoneNumberSelectionList.setAdapter(new CheckBoxAdapter<>(requireContext(), contactWithData.getPhoneNumbers(), this::onPhoneNumberToggled));
 
         binding.finishPhoneNumberSelectionButton.setOnClickListener((ignored) -> {
+            List<PhoneNumber> originalPhoneNumbers = contactWithData.getPhoneNumbers();
+            List<PhoneNumber> selectedPhoneNumbers = new LinkedList<>();
+
+            for (Map.Entry<String, Boolean> entry : phoneNumbers.entrySet()) {
+                if (entry.getValue()) {
+                    Optional<PhoneNumber> result = originalPhoneNumbers.stream().filter(x -> x.getPhoneNumberId().equals(entry.getKey())).findFirst();
+                    if (result.isEmpty()) continue;
+                    selectedPhoneNumbers.add(result.get());
+                }
+            }
+
+            contactWithData.setPhoneNumbers(selectedPhoneNumbers);
+
             DatabaseUtils.insertContactWithData(requireContext(), contactWithData);
+
+            Bundle navArgs = new Bundle();
+            navArgs.putString(RecipientMessagesPage.ARGS.CONTACT_ID.getValue(), contactWithData.getContact().getContactId());
+
+            navController.navigate(NumberSelectionPageDirections.actionNumberSelectionPageToRecipientMessagesPage().getActionId(), navArgs);
         });
+    }
+
+    private void onPhoneNumberToggled(PhoneNumber phoneNumber, boolean value) {
+        String id = phoneNumber.getPhoneNumberId();
+        if (!phoneNumbers.containsKey(id)) return;
+        phoneNumbers.put(id, value);
     }
 
     private void navigateToErrorPage() {

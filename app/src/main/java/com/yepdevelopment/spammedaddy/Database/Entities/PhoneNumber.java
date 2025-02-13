@@ -21,6 +21,12 @@ public class PhoneNumber {
 
     private String phoneNumber = "";
 
+    @NonNull
+    @Override
+    public String toString() {
+        return phoneNumber;
+    }
+
     public static PhoneNumber generateSample() {
         PhoneNumber inst = new PhoneNumber();
         inst.phoneNumberId = UUID.randomUUID().toString();
