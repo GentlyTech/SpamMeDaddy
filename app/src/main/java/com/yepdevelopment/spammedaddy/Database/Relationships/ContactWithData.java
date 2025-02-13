@@ -53,7 +53,7 @@ public class ContactWithData {
         PhoneNumber phoneNumberObj = new PhoneNumber();
         phoneNumberObj.setPhoneNumber(phoneNumber);
         phoneNumberObj.setContactId(contact.getContactId());
-        phoneNumberObj.setPhoneNumberId(UUID.randomUUID().toString());
+        phoneNumberObj.setPhoneNumberId(MD5.hash(phoneNumber));
 
         phoneNumbers.add(phoneNumberObj);
     }
