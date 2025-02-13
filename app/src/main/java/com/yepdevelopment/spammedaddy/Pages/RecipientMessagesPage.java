@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
+import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageRecipientMessagesBinding;
 
@@ -55,7 +56,12 @@ public class RecipientMessagesPage extends Page<PageRecipientMessagesBinding> {
     }
 
     private void navigateToErrorPage() {
+        Bundle navArgs = new Bundle();
 
+        navArgs.putString(ErrorPage.ARGS.HEADING.getValue(), getString(R.string.recipientMessagesPage_ErrorPageHeading_InvalidContact));
+        navArgs.putString(ErrorPage.ARGS.BODY.getValue(), getString(R.string.recipientMessagesPage_ErrorPageBody_InvalidContact));
+
+        navController.navigate(RecipientMessagesPageDirections.actionRecipientMessagesPageToErrorPage().getActionId(), navArgs);
     }
 
     @Getter

@@ -44,6 +44,10 @@
     <string name="numberSelectionPage_ErrorPageHeading_NoContact">No Contact Selected</string>
     <string name="numberSelectionPage_ErrorPageBody_NoContact">This page is missing contact information that is needed to function. Please go back and try again.</string>
 
+    <!-- RecipientMessages Page Strings -->
+    <string name="recipientMessagesPage_ErrorPageHeading_InvalidContact">Data Error</string>
+    <string name="recipientMessagesPage_ErrorPageBody_InvalidContact">This page is missing information that is needed to function. Please go back and try again.</string>
+
     <!-- Menu Item Strings -->
     <string name="menuItem_About">About</string>
     <string name="menuItem_WipeDatabase">Wipe Database</string>

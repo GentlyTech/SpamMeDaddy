@@ -37,7 +37,12 @@
         android:id="@+id/recipientMessagesPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.RecipientMessagesPage"
         android:label="@string/recipientMessagesPage_Title"
-        tools:layout="@layout/page_recipient_messages" />
+        tools:layout="@layout/page_recipient_messages" >
+        <action
+            android:id="@+id/action_recipientMessagesPage_to_errorPage"
+            app:destination="@id/errorPage"
+            app:popUpTo="@id/homePage" />
+    </fragment>
     <fragment
         android:id="@+id/aboutPage"
         android:name="com.yepdevelopment.spammedaddy.Pages.AboutPage"
