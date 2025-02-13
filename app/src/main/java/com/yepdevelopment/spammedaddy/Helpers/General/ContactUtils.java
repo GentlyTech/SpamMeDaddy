@@ -37,8 +37,7 @@ public class ContactUtils {
 
             if (contactMap.containsKey(displayName)) {
                 contact = contactMap.get(displayName);
-            }
-            else {
+            } else {
                 contact = ContactWithData.newInstance(displayName);
                 contactMap.put(displayName, contact);
             }

@@ -9,14 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
-import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
 
 import java.lang.reflect.InvocationTargetException;
 
 public abstract class GenericAdapter<T extends ViewBinding> extends RecyclerView.Adapter<GenericViewHolder<T>> {
-    private final Class<T> viewBindingClass;
-
     protected final Context context;
+    private final Class<T> viewBindingClass;
 
     public GenericAdapter(Context context, Class<T> viewBindingClass) {
         this.viewBindingClass = viewBindingClass;

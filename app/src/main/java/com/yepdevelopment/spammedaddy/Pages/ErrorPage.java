@@ -1,8 +1,6 @@
 package com.yepdevelopment.spammedaddy.Pages;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;

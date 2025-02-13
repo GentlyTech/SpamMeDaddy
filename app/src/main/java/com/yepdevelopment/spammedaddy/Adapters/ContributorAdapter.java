@@ -2,11 +2,8 @@ package com.yepdevelopment.spammedaddy.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.spammedaddy.Types.Contributor;
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;

@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.yepdevelopment.spammedaddy.Adapters.ContactWithDataAdapter;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.Serializer;
-import com.yepdevelopment.spammedaddy.R;
-import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.Helpers.Android.TextChangedListeners.OnTextChangedListener;
 import com.yepdevelopment.spammedaddy.Helpers.General.ContactUtils;
+import com.yepdevelopment.spammedaddy.R;
+import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.ViewModels.AddRecipientPageViewModel;
 import com.yepdevelopment.spammedaddy.databinding.PageAddRecipientBinding;
 

@@ -1,6 +1,5 @@
 package com.yepdevelopment.spammedaddy.Database;
 
-import android.content.Context;
 import android.util.Log;
 
 import androidx.room.Database;

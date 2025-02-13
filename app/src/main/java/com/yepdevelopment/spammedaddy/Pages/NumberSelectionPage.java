@@ -11,13 +11,10 @@ import com.yepdevelopment.spammedaddy.Adapters.CheckBoxAdapter;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.Serializer;
-import com.yepdevelopment.spammedaddy.Helpers.Android.DatabaseUtils;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
 import com.yepdevelopment.spammedaddy.databinding.PageNumberSelectionBinding;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;

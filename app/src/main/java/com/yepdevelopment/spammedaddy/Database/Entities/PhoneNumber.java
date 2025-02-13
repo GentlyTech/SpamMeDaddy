@@ -24,17 +24,17 @@ public class PhoneNumber {
 
     private String phoneNumber = "";
 
-    @NonNull
-    @Override
-    public String toString() {
-        return phoneNumber;
-    }
-
     public static PhoneNumber generateSample() {
         PhoneNumber inst = new PhoneNumber();
         inst.phoneNumberId = UUID.randomUUID().toString();
         inst.contactId = UUID.randomUUID().toString();
         inst.phoneNumber = UUID.randomUUID().toString();
         return inst;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return phoneNumber;
     }
 }

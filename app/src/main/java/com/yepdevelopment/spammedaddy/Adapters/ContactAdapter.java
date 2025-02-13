@@ -12,7 +12,7 @@ import com.yepdevelopment.spammedaddy.databinding.ComponentSimpleContactCardBind
 import java.util.LinkedList;
 import java.util.List;
 
-public class ContactAdapter extends GenericAdapter<ComponentSimpleContactCardBinding>{
+public class ContactAdapter extends GenericAdapter<ComponentSimpleContactCardBinding> {
     private final List<Contact> contacts;
 
     private final Consumer<Contact> onClickHandler;
