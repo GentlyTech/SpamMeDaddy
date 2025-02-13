@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.yepdevelopment.spammedaddy.MenuProviders.GeneralMenuProvider;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.Types.Page;
@@ -20,7 +21,8 @@ public class HomePage extends Page<PageHomeBinding> {
                 navController.navigate(HomePageDirections.actionHomePageToAboutPage());
                 return true;
             } else if (menuItemId == R.id.menuItemDebug) {
-                navController.navigate(HomePageDirections.actionHomePageToRecipientMessagesPage());
+                database.wipeDatabase();
+                Snackbar.make(view, "Database wiped", Snackbar.LENGTH_SHORT).show();
                 return true;
             }
             return false;

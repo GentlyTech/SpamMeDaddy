@@ -35,4 +35,10 @@ public abstract class AppDatabase extends RoomDatabase {
         phoneNumberDao().insertPhoneNumbers(data.getPhoneNumbers());
         messageDao().insertMessages(data.getMessages());
     }
+
+    public void wipeDatabase() {
+        contactDao().deleteAllContacts();
+        phoneNumberDao().deleteAllPhoneNumbers();
+        messageDao().deleteAllMessages();
+    }
 }
