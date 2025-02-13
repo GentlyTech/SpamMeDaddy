@@ -2,11 +2,9 @@ package com.yepdevelopment.spammedaddy.Adapters;
 
 import android.content.Context;
 import android.telephony.PhoneNumberUtils;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
@@ -19,18 +17,18 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ContactListAdapter extends GenericAdapter<ComponentContactCardBinding> {
-    private final List<ContactWithData> contacts;
+    private final List<ContactWithData> contactsWithData;
     private final Consumer<ContactWithData> onClickHandler;
 
-    public ContactListAdapter(Context context, List<ContactWithData> contacts, Consumer<ContactWithData> onClickHandler) {
+    public ContactListAdapter(Context context, List<ContactWithData> contactsWithData, Consumer<ContactWithData> onClickHandler) {
         super(context, ComponentContactCardBinding.class);
-        this.contacts = contacts != null ? contacts : new LinkedList<>();
+        this.contactsWithData = contactsWithData != null ? contactsWithData : new LinkedList<>();
         this.onClickHandler = onClickHandler;
     }
 
     @Override
     public void onBindViewHolder(@NonNull GenericViewHolder<ComponentContactCardBinding> holder, int position) {
-        ContactWithData contact = contacts.get(position);
+        ContactWithData contact = contactsWithData.get(position);
         if (contact == null) return;
 
         List<PhoneNumber> phoneNumbers = contact.getPhoneNumbers();
@@ -57,6 +55,6 @@ public class ContactListAdapter extends GenericAdapter<ComponentContactCardBindi
 
     @Override
     public int getItemCount() {
-        return contacts.size();
+        return contactsWithData.size();
     }
 }
