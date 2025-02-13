@@ -23,6 +23,16 @@ public abstract class PhoneNumberDao {
     @Delete
     public abstract ListenableFuture<Void> deletePhoneNumber(PhoneNumber contact);
 
+    @Query("DELETE FROM phonenumber")
+    public abstract ListenableFuture<Void> deleteAllPhoneNumbers();
+
+    @Query("DELETE FROM phonenumber WHERE contactId = :contactId")
+    public abstract ListenableFuture<Void> deleteAllPhoneNumbersByContactId(String contactId);
+
+    public ListenableFuture<Void> deleteAllPhoneNumbersForContact(Contact contact) {
+        return deleteAllPhoneNumbersByContactId(contact.getContactId());
+    }
+
     @Query("SELECT * FROM phonenumber")
     public abstract ListenableFuture<List<PhoneNumber>> getAllPhoneNumbers();
 

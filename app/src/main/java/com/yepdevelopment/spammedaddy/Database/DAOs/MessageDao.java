@@ -23,6 +23,16 @@ public abstract class MessageDao {
     @Delete
     public abstract ListenableFuture<Void> deleteMessage(Message message);
 
+    @Query("DELETE FROM message")
+    public abstract ListenableFuture<Void> deleteAllMessages();
+
+    @Query("DELETE FROM message WHERE contactId = :contactId")
+    public abstract ListenableFuture<Void> deleteAllMessagesByContactId(String contactId);
+
+    public ListenableFuture<Void> deleteAllMessagesForContact(Contact contact) {
+        return deleteAllMessagesByContactId(contact.getContactId());
+    }
+
     @Query("SELECT * FROM message")
     public abstract ListenableFuture<List<Message>> getAllMessages();
 

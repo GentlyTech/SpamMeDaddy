@@ -23,6 +23,9 @@ public interface ContactDao {
     @Delete
     ListenableFuture<Void> deleteContact(Contact contact);
 
+    @Query("DELETE FROM contact")
+    ListenableFuture<Void> deleteAllContacts();
+
     @Query("SELECT * FROM contact")
     ListenableFuture<List<Contact>> getAllContacts();
 
