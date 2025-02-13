@@ -33,14 +33,19 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         Bundle args = getArguments();
 
         if (args == null) {
-            navigateToErrorPage();
+            navigateToErrorPage(R.string.numberSelectionPage_ErrorPageHeading_NoContact, R.string.numberSelectionPage_ErrorPageBody_NoContact);
             return;
         }
 
         String rawContactWithData = args.getString(ARGS.CONTACT.getValue());
         ContactWithData contact = Serializer.getSerializer().fromJson(rawContactWithData, ContactWithData.class);
         if (contact == null) {
-            navigateToErrorPage();
+            navigateToErrorPage(R.string.numberSelectionPage_ErrorPageHeading_NoContact, R.string.numberSelectionPage_ErrorPageBody_NoContact);
+            return;
+        }
+
+        if (contact.getPhoneNumbers() == null || contact.getPhoneNumbers().isEmpty()) {
+            navigateToErrorPage(R.string.numberSelectionPage_ErrorPageHeading_NoPhoneNumbers, R.string.numberSelectionPage_ErrorPageBody_NoPhoneNumbers);
             return;
         }
 
@@ -84,10 +89,10 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         phoneNumbers.put(id, value);
     }
 
-    private void navigateToErrorPage() {
+    private void navigateToErrorPage(int headingId, int bodyId) {
         Bundle errorPageArgs = new Bundle();
-        errorPageArgs.putString(ErrorPage.ARGS.HEADING.getValue(), getString(R.string.numberSelectionPage_ErrorPageHeading_NoContact));
-        errorPageArgs.putString(ErrorPage.ARGS.BODY.getValue(), getString(R.string.numberSelectionPage_ErrorPageBody_NoContact));
+        errorPageArgs.putString(ErrorPage.ARGS.HEADING.getValue(), getString(headingId));
+        errorPageArgs.putString(ErrorPage.ARGS.BODY.getValue(), getString(bodyId));
         navController.navigate(NumberSelectionPageDirections.actionNumberSelectionPageToErrorPage().getActionId(), errorPageArgs);
     }
 
