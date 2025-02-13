@@ -23,10 +23,12 @@ public class HomePage extends Page<PageHomeBinding> {
             if (menuItemId == R.id.menuItemAbout) {
                 navController.navigate(HomePageDirections.actionHomePageToAboutPage());
                 return true;
-            } else if (menuItemId == R.id.menuItemDebug) {
+            } else if (menuItemId == R.id.menuItemWipeDatabase) {
                 database.wipeDatabase();
                 Snackbar.make(view, "Database wiped", Snackbar.LENGTH_SHORT).show();
                 return true;
+            } else if (menuItemId == R.id.menuItemDebug) {
+                Snackbar.make(view, "No function assigned to debug button", Snackbar.LENGTH_SHORT).show();
             }
             return false;
         })), getViewLifecycleOwner());
