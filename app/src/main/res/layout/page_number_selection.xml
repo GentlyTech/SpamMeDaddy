@@ -7,6 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".Pages.NumberSelectionPage">
 
+    <include
+        android:id="@+id/recipientCard"
+        layout="@layout/component_simple_contact_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/selectPhoneNumberGuideText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/numberSelectionPage_selectPhoneNumberGuideText"
+        app:layout_constraintBottom_toTopOf="@+id/phoneNumberSelectionList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipientCard" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/phoneNumberSelectionList"
         android:layout_width="0dp"
@@ -18,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@+id/invalidPhoneNumberSelectionText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/selectPhoneNumberGuideText" />
 
     <TextView
         android:id="@+id/invalidPhoneNumberSelectionText"
@@ -31,10 +56,26 @@
         android:text="@string/numberSelectionPage_InvalidPhoneNumberSelectionText"
         android:textColor="@color/niceRed"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/finishPhoneNumberSelectionButton"
+        app:layout_constraintBottom_toTopOf="@+id/selectPhoneNumberReassuranceText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberSelectionList" />
+
+    <TextView
+        android:id="@+id/selectPhoneNumberReassuranceText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/numberSelectionPage_selectPhoneNumberReassuranceText"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/finishPhoneNumberSelectionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invalidPhoneNumberSelectionText" />
 
     <Button
         android:id="@+id/finishPhoneNumberSelectionButton"

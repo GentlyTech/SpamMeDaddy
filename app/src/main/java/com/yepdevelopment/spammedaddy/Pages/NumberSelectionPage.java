@@ -51,6 +51,8 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
 
         this.contactWithData = contact;
 
+        binding.recipientCard.simpleContactCardDisplayName.setText(contact.getContact().getContactName());
+
         phoneNumbers = new HashMap<>();
 
         for (PhoneNumber phoneNumber : contactWithData.getPhoneNumbers()) {

@@ -42,6 +42,8 @@
 
     <!-- NumberSelection Page Strings -->
     <string name="numberSelectionPage_InvalidPhoneNumberSelectionText">Please select at least 1 phone number.</string>
+    <string name="numberSelectionPage_selectPhoneNumberGuideText">Choose which phone numbers you would like to schedule send to:</string>
+    <string name="numberSelectionPage_selectPhoneNumberReassuranceText">You can always change these later.</string>
     <string name="numberSelectionPage_ErrorPageHeading_NoContact">No Contact Selected</string>
     <string name="numberSelectionPage_ErrorPageBody_NoContact">This page is missing contact information that is needed to function. Please go back and try again.</string>
     <string name="numberSelectionPage_ErrorPageHeading_NoPhoneNumbers">No Phone Numbers</string>
