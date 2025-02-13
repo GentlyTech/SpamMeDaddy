@@ -61,6 +61,8 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
         binding.phoneNumberSelectionList.setAdapter(new CheckBoxAdapter<>(requireContext(), contactWithData.getPhoneNumbers(), this::onPhoneNumberToggled));
 
         binding.finishPhoneNumberSelectionButton.setOnClickListener((ignored) -> {
+            binding.invalidPhoneNumberSelectionText.setVisibility(View.GONE);
+
             List<PhoneNumber> originalPhoneNumbers = contactWithData.getPhoneNumbers();
             List<PhoneNumber> selectedPhoneNumbers = new LinkedList<>();
 
@@ -70,6 +72,11 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
                     if (result.isEmpty()) continue;
                     selectedPhoneNumbers.add(result.get());
                 }
+            }
+
+            if (selectedPhoneNumbers.isEmpty()) {
+                binding.invalidPhoneNumberSelectionText.setVisibility(View.VISIBLE);
+                return;
             }
 
             contactWithData.setPhoneNumbers(selectedPhoneNumbers);
