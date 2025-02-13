@@ -1,5 +1,6 @@
 package com.yepdevelopment.spammedaddy.Database.DAOs;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -28,6 +29,9 @@ public interface ContactDao {
 
     @Query("SELECT * FROM contact")
     ListenableFuture<List<Contact>> getAllContacts();
+
+    @Query("SELECT * FROM contact")
+    LiveData<List<Contact>> getAllContactsObservable();
 
     @Transaction
     @Query("SELECT * FROM contact")
