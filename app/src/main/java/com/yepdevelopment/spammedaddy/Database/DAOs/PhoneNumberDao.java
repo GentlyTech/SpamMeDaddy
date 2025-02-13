@@ -3,6 +3,7 @@ package com.yepdevelopment.spammedaddy.Database.DAOs;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -13,10 +14,10 @@ import java.util.List;
 
 @Dao
 public abstract class PhoneNumberDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     public abstract ListenableFuture<Void> insertPhoneNumbers(PhoneNumber... phoneNumbers);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     public abstract ListenableFuture<Void> insertPhoneNumbers(List<PhoneNumber> phoneNumbers);
 
     @Delete
