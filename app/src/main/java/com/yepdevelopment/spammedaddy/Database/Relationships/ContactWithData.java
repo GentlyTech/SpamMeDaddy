@@ -6,6 +6,7 @@ import androidx.room.Relation;
 import com.yepdevelopment.spammedaddy.Database.Entities.Contact;
 import com.yepdevelopment.spammedaddy.Database.Entities.Message;
 import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
+import com.yepdevelopment.spammedaddy.Helpers.General.MD5;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -32,7 +33,7 @@ public class ContactWithData {
 
         contactWithData.contact = new Contact();
         contactWithData.contact.setContactName(contactName);
-        contactWithData.contact.setContactId(UUID.randomUUID().toString());
+        contactWithData.contact.setContactId(MD5.hash(contactName));
 
         contactWithData.phoneNumbers = new LinkedList<>();
         contactWithData.messages = new LinkedList<>();
