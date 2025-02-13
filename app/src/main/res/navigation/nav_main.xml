@@ -50,7 +50,8 @@
         tools:layout="@layout/page_number_selection">
         <action
             android:id="@+id/action_numberSelectionPage_to_recipientMessagesPage"
-            app:destination="@id/recipientMessagesPage" />
+            app:destination="@id/recipientMessagesPage"
+            app:popUpTo="@id/homePage" />
         <action
             android:id="@+id/action_numberSelectionPage_to_errorPage"
             app:destination="@id/errorPage"
