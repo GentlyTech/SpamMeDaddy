@@ -10,24 +10,24 @@ import com.yepdevelopment.spammedaddy.Database.Entities.PhoneNumber;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.R;
 import com.yepdevelopment.spammedaddy.ViewHolders.GenericViewHolder;
-import com.yepdevelopment.spammedaddy.databinding.ComponentContactCardBinding;
+import com.yepdevelopment.spammedaddy.databinding.ComponentFullContactCardBinding;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ContactListAdapter extends GenericAdapter<ComponentContactCardBinding> {
+public class ContactWithDataAdapter extends GenericAdapter<ComponentFullContactCardBinding> {
     private final List<ContactWithData> contactsWithData;
     private final Consumer<ContactWithData> onClickHandler;
 
-    public ContactListAdapter(Context context, List<ContactWithData> contactsWithData, Consumer<ContactWithData> onClickHandler) {
-        super(context, ComponentContactCardBinding.class);
+    public ContactWithDataAdapter(Context context, List<ContactWithData> contactsWithData, Consumer<ContactWithData> onClickHandler) {
+        super(context, ComponentFullContactCardBinding.class);
         this.contactsWithData = contactsWithData != null ? contactsWithData : new LinkedList<>();
         this.onClickHandler = onClickHandler;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GenericViewHolder<ComponentContactCardBinding> holder, int position) {
+    public void onBindViewHolder(@NonNull GenericViewHolder<ComponentFullContactCardBinding> holder, int position) {
         ContactWithData contact = contactsWithData.get(position);
         if (contact == null) return;
 
@@ -40,16 +40,16 @@ public class ContactListAdapter extends GenericAdapter<ComponentContactCardBindi
         String formattedPhoneNumber = PhoneNumberUtils.formatNumber(firstPhoneNumber.getPhoneNumber(), "CA");
         if (formattedPhoneNumber == null) formattedPhoneNumber = firstPhoneNumber.getPhoneNumber();
 
-        holder.getBinding().contactCardDisplayName.setText(contact.getContact().getContactName());
-        holder.getBinding().contactCardPhoneNumber.setText(formattedPhoneNumber);
+        holder.getBinding().fullContactCardDisplayName.setText(contact.getContact().getContactName());
+        holder.getBinding().fullContactCardPhoneNumber.setText(formattedPhoneNumber);
 
         if (phoneNumbers.size() > 1) {
-            holder.getBinding().contactCardOverflowText.setText(context.getString(R.string.contactCardPhoneNumberOverflowTextView_Text, phoneNumbers.size() - 1));
-            holder.getBinding().contactCardOverflowText.setVisibility(ViewGroup.VISIBLE);
+            holder.getBinding().fullContactCardOverflowText.setText(context.getString(R.string.contactCardPhoneNumberOverflowTextView_Text, phoneNumbers.size() - 1));
+            holder.getBinding().fullContactCardOverflowText.setVisibility(ViewGroup.VISIBLE);
         }
 
         if (onClickHandler != null) {
-            holder.getBinding().contactCardLayoutRoot.setOnClickListener((ignored) -> onClickHandler.accept(contact));
+            holder.getBinding().fullContactCardLayoutRoot.setOnClickListener((ignored) -> onClickHandler.accept(contact));
         }
     }
 

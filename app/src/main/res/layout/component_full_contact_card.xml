@@ -3,7 +3,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contactCardRoot"
+    android:id="@+id/fullContactCardRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -12,13 +12,13 @@
     app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contactCardLayoutRoot"
+        android:id="@+id/fullContactCardLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="?attr/selectableItemBackground">
 
         <ImageView
-            android:id="@+id/contactCardAvatar"
+            android:id="@+id/fullContactCardAvatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
             app:srcCompat="@drawable/baseline_person_24" />
 
         <TextView
-            android:id="@+id/contactCardDisplayName"
+            android:id="@+id/fullContactCardDisplayName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -39,14 +39,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:text="Name"
-            app:layout_constraintBottom_toTopOf="@+id/contactCardPhoneNumber"
+            app:layout_constraintBottom_toTopOf="@+id/fullContactCardPhoneNumber"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/contactCardAvatar"
+            app:layout_constraintStart_toEndOf="@+id/fullContactCardAvatar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/contactCardPhoneNumber"
+            android:id="@+id/fullContactCardPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -54,14 +54,14 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="Phone Number"
-            app:layout_constraintBottom_toTopOf="@+id/contactCardOverflowText"
+            app:layout_constraintBottom_toTopOf="@+id/fullContactCardOverflowText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/contactCardAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/contactCardDisplayName"
+            app:layout_constraintStart_toEndOf="@+id/fullContactCardAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/fullContactCardDisplayName"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/contactCardOverflowText"
+            android:id="@+id/fullContactCardOverflowText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -72,7 +72,7 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/contactCardAvatar"
-            app:layout_constraintTop_toBottomOf="@+id/contactCardPhoneNumber" />
+            app:layout_constraintStart_toEndOf="@+id/fullContactCardAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/fullContactCardPhoneNumber" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

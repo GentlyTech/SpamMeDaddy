@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.yepdevelopment.spammedaddy.Adapters.ContactListAdapter;
+import com.yepdevelopment.spammedaddy.Adapters.ContactWithDataAdapter;
 import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import com.yepdevelopment.spammedaddy.Gson.Serializer;
 import com.yepdevelopment.spammedaddy.R;
@@ -72,7 +72,7 @@ public class AddRecipientPage extends Page<PageAddRecipientBinding> {
                 return;
             }
             showContactsList();
-            binding.addRecipientsContactsList.setAdapter(new ContactListAdapter(getContext(), updatedList, this::onContactCardClicked));
+            binding.addRecipientsContactsList.setAdapter(new ContactWithDataAdapter(getContext(), updatedList, this::onContactCardClicked));
         });
 
         binding.recipientEditText.addTextChangedListener(new OnTextChangedListener((updatedValue) -> addRecipientPageViewModel.setRecipientFieldText(updatedValue.toString())));
