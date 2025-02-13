@@ -14,27 +14,35 @@ import com.yepdevelopment.spammedaddy.Database.Relationships.ContactWithData;
 import java.util.List;
 
 @Dao
-public interface ContactDao {
+public abstract class ContactDao {
     @Insert
-    ListenableFuture<Void> insertContacts(Contact... contacts);
+    public abstract ListenableFuture<Void> insertContacts(Contact... contacts);
 
     @Insert
-    ListenableFuture<Void> insertContacts(List<Contact> contacts);
+    public abstract ListenableFuture<Void> insertContacts(List<Contact> contacts);
 
     @Delete
-    ListenableFuture<Void> deleteContact(Contact contact);
+    public abstract ListenableFuture<Void> deleteContact(Contact contact);
 
     @Query("DELETE FROM contact")
-    ListenableFuture<Void> deleteAllContacts();
+    public abstract ListenableFuture<Void> deleteAllContacts();
 
     @Query("SELECT * FROM contact")
-    ListenableFuture<List<Contact>> getAllContacts();
+    public abstract ListenableFuture<List<Contact>> getAllContacts();
 
     @Query("SELECT * FROM contact")
-    LiveData<List<Contact>> getAllContactsObservable();
+    public abstract LiveData<List<Contact>> getAllContactsObservable();
 
     @Transaction
     @Query("SELECT * FROM contact")
-    ListenableFuture<List<ContactWithData>> getContactsWithData();
+    public abstract ListenableFuture<List<ContactWithData>> getContactsWithData();
+
+    @Transaction
+    @Query("SELECT * FROM contact WHERE contactId = :contactId")
+    public abstract ListenableFuture<ContactWithData> getContactWithDataFromContactId(String contactId);
+
+    ListenableFuture<ContactWithData> getContactWithDataFromContact(Contact contact) {
+        return getContactWithDataFromContactId(contact.getContactId());
+    }
 
 }
