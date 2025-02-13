@@ -72,7 +72,7 @@ public class NumberSelectionPage extends Page<PageNumberSelectionBinding> {
 
             contactWithData.setPhoneNumbers(selectedPhoneNumbers);
 
-            DatabaseUtils.insertContactWithData(requireContext(), contactWithData);
+            database.insertContactWithData(contactWithData);
 
             Bundle navArgs = new Bundle();
             navArgs.putString(RecipientMessagesPage.ARGS.CONTACT_ID.getValue(), contactWithData.getContact().getContactId());
