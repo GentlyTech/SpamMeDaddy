@@ -8,8 +8,8 @@
     tools:context=".Pages.RecipientMessagesPage">
 
     <include
-        android:id="@+id/include2"
-        layout="@layout/component_full_contact_card"
+        android:id="@+id/recipientCard"
+        layout="@layout/component_simple_contact_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

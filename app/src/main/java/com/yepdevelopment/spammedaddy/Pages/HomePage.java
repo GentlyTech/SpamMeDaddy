@@ -52,7 +52,11 @@ public class HomePage extends Page<PageHomeBinding> {
     }
 
     private void onContactClicked(Contact contact) {
-        Snackbar.make(binding.getRoot(), String.format("Contact Clicked: %s", contact.getContactName()), Snackbar.LENGTH_SHORT).show();
+        Bundle navArgs = new Bundle();
+
+        navArgs.putString(RecipientMessagesPage.ARGS.CONTACT_ID.getValue(), contact.getContactId());
+
+        navController.navigate(HomePageDirections.actionHomePageToRecipientMessagesPage().getActionId(), navArgs);
     }
 
     public void showRecipientsList() {
